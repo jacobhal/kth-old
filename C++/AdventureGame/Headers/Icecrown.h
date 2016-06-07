@@ -5,9 +5,9 @@
 #ifndef ADVENTUREGAME_ICECROWN_H
 #define ADVENTUREGAME_ICECROWN_H
 
-#include "../Headers/Setting.h"
+#include "Outside.h"
 
-class Icecrown : public Setting {
+class Icecrown : public Outside {
 
 public:
     Icecrown(std::string name, std::string description);

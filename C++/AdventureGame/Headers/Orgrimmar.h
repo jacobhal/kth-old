@@ -5,9 +5,9 @@
 #ifndef ADVENTUREGAME_ORGRIMMAR_H
 #define ADVENTUREGAME_ORGRIMMAR_H
 
-#include "../Headers/Setting.h"
+#include "Outside.h"
 
-class Orgrimmar : public Setting {
+class Orgrimmar : public Outside {
 
 public:
     Orgrimmar(std::string name, std::string description);

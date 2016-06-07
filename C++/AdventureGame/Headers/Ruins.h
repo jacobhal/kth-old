@@ -5,9 +5,9 @@
 #ifndef ADVENTUREGAME_RUINS_H
 #define ADVENTUREGAME_RUINS_H
 
-#include "../Headers/Setting.h"
+#include "Inside.h"
 
-class Ruins : public Setting {
+class Ruins : public Inside {
 
 public:
     Ruins(std::string name, std::string description);

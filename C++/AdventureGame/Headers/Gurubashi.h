@@ -5,9 +5,9 @@
 #ifndef ADVENTUREGAME_GURUBASHI_H
 #define ADVENTUREGAME_GURUBASHI_H
 
-#include "../Headers/Setting.h"
+#include "Outside.h"
 
-class Gurubashi : public Setting {
+class Gurubashi : public Outside {
 
 public:
     Gurubashi(std::string name, std::string description);

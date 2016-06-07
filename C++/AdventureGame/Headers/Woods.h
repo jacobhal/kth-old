@@ -5,9 +5,9 @@
 #ifndef ADVENTUREGAME_WOODS_H
 #define ADVENTUREGAME_WOODS_H
 
-#include "../Headers/Setting.h"
+#include "Outside.h"
 
-class Woods : public Setting {
+class Woods : public Outside {
 
 public:
     Woods(std::string name, std::string description);
