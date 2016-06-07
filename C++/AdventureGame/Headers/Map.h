@@ -11,7 +11,7 @@ class Map : public Useable {
 public:
     Map(std::string name, std::string description);
     ~Map();
-    std::string use();
+    std::string use(Character*);
 };
 
 #endif //ADVENTUREGAME_MAP_H

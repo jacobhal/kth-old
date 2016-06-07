@@ -6,8 +6,10 @@
 
 #include "Item.h"
 #include "Setting.h"
+#include "Useable.h"
 
 class Setting;
+class Useable;
 
 struct Stats {
 	int hp;
@@ -41,6 +43,7 @@ public:
 	bool hasItem(std::string name) const;
 	void addItem(Item *item);
 	void removeItem(Item *item);
+	void useItem(Useable *item);
 	// TODO Fixa
 	Item* getItemByName(std::string n) const;
 

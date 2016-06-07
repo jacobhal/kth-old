@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Key.h"
+#include "Character.h"
 
 using std::cout;
 
@@ -10,6 +11,6 @@ Key::Key(std::string name, std::string description) {
 }
 Key::~Key() {
 }
-std::string Key::use() {
+std::string Key::use(Character *c) {
 	return "";
 }

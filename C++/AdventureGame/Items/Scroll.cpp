@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Scroll.h"
+#include "Character.h"
 
 using std::cout;
 
@@ -10,6 +11,6 @@ Scroll::Scroll(std::string name, std::string description) {
 }
 Scroll::~Scroll() {
 }
-std::string Scroll::use() {
+std::string Scroll::use(Character* c) {
 	return "";
 }

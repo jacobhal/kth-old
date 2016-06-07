@@ -4,6 +4,8 @@
 
 #include <string>
 #include <vector>
+#include <time.h>
+#include <algorithm>
 #include "Item.h"
 #include "Character.h"
 #include "Setting.h"

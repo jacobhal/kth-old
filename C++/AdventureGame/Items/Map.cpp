@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Map.h"
+#include "Character.h"
 
 using std::cout;
 
@@ -10,6 +11,6 @@ Map::Map(std::string name, std::string description) {
 }
 Map::~Map() {
 }
-std::string Map::use() {
+std::string Map::use(Character* c) {
 	return "";
 }

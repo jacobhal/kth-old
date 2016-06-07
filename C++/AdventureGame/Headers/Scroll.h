@@ -11,7 +11,7 @@ class Scroll : public Useable {
 public:
     Scroll(std::string name, std::string description);
     ~Scroll();
-    std::string use();
+    std::string use(Character*);
 };
 
 #endif //ADVENTUREGAME_SCROLL_H

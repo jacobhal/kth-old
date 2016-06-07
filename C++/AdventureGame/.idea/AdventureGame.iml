@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Settings/Woods.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Settings/Orgrimmar.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Items/Potion.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Items/Map.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Items/Chest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Items/Key.cpp" isTestSource="false" />

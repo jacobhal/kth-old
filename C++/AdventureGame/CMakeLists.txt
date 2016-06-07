@@ -5,7 +5,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 include_directories(Headers)
 
-set(ITEM_FILES Items/Chest.cpp Items/Key.cpp Items/Map.cpp Items/Scroll.cpp)
+set(ITEM_FILES Items/Chest.cpp Items/Key.cpp Items/Map.cpp Items/Scroll.cpp Items/Potion.cpp)
 set(SETTING_FILES Settings/Gurubashi.cpp Settings/Icecrown.cpp Settings/Orgrimmar.cpp Settings/Ruins.cpp Settings/Woods.cpp)
 set(CHARACTER_FILES Characters/Beast.cpp Characters/DeathKnight.cpp Characters/Mage.cpp Characters/Paladin.cpp Characters/Priest.cpp)
 

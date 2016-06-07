@@ -6,9 +6,13 @@
 #define ADVENTUREGAME_USEABLE_H
 
 #include "Item.h"
+#include "Character.h"
+
+class Character;
 
 class Useable : public Item {
-    virtual std::string use() =0;
+public:
+    virtual std::string use(Character*) =0;
 };
 
 #endif //ADVENTUREGAME_USEABLE_H

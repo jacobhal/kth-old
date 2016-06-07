@@ -238,7 +238,7 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 		} else {
 			if(checkSize(userInput, 2)) {
 				if(_player->hasItem(keyword)) {
-					// TODO
+					// TODO: Check that item to be used is in the backpack and use the item
 					//_player->use(keyword);
 				} else {
 					cout << "You don't have that item in your backpack!\n"; 

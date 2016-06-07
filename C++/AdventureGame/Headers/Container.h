@@ -8,6 +8,7 @@
 #include "Item.h"
 
 class Container : public Item {
+public:
     virtual std::string open() =0;
 };
 

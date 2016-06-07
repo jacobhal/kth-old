@@ -11,6 +11,7 @@
 #include "Character.h"
 
 class Setting;
+class Useable;
 
 Character::~Character() {}; // Even pure virtual destructors must be defined
 
@@ -39,6 +40,11 @@ void Character::addItem(Item *item) {
 }
 void Character::removeItem(Item *item){
     _inventory.erase(std::remove(_inventory.begin(), _inventory.end(), item), _inventory.end());
+}
+
+void Character::useItem(Useable *item) {
+    // TODO: Check that player has item and add functionality in item files
+    item->use(this);
 }
 // TODO Fixa
 Item* Character::getItemByName(std::string n) const {
