@@ -13,7 +13,7 @@ class GameEngine {
 private:
 	std::vector<std::string> 				_availableCommands;
 	std::map<std::string, std::string> 		_descriptions;
-	Setting*								_currentSetting;
+	//Setting*								_currentSetting;
 	Character*								_player;
 	std::vector<Item*> 						_items;
 	std::map<std::string, int> 				_lookup;

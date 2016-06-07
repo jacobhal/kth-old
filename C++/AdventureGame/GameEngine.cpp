@@ -41,8 +41,9 @@ void writeError(std::string msg, std::string format) {
 
 GameEngine::GameEngine(Setting *setting, Character *player, std::vector<Item*> items) {
 	_items = items;
-	_currentSetting = setting;
+	//_currentSetting = setting;
 	_player = player;
+	_player->_location = setting;
 	_isRunning = true;
 	_availableCommands = {
 		"go", 
@@ -121,12 +122,12 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			cout << _descriptions["go"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
-				if(_currentSetting->hasRoute(keyword)) {
-					auto it = _currentSetting->move(_player, keyword);
+				if(_player->_location->hasRoute(keyword)) {
+					auto it = _player->_location->move(_player, keyword);
 					if(it != NULL) {
-						_currentSetting = it;
+						_player->_location = it;
 					}
-					cout << BOLDYELLOW << "New location \n" << RESET << _currentSetting->_description << "\n";
+					cout << BOLDYELLOW << "New location \n" << RESET << _player->_location->_description << "\n";
 				} else {
 					cout << "There's no route in that direction!\n";
 				}
@@ -145,9 +146,9 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			cout << _descriptions["pick"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
-				if(_currentSetting->hasItem(keyword)) {
+				if(_player->_location->hasItem(keyword)) {
 					_player->addItem(getItemByName(keyword));
-					_currentSetting->removeItem(getItemByName(keyword));
+					_player->_location->removeItem(getItemByName(keyword));
 					cout << BOLDGREEN << "Picked up " << getItemByName(keyword)->_name << "\n";
 				} else {
 					cout << "That item is not to be found here!\n";
@@ -163,9 +164,9 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			if(checkSize(userInput, 1)) {
 				if(_player->hasItem("map")) {
 					cout << BOLDYELLOW << "Current position \n" << RESET;
-					cout << _currentSetting->_description << "\n";
+					cout << _player->_location->_description << "\n";
 					cout << BOLDYELLOW << "Available directions \n" << RESET;
-					for(auto elem : _currentSetting->getRoutes()) {
+					for(auto elem : _player->_location->getRoutes()) {
 						cout << elem << "\n";
 					}
 				} else {
@@ -203,7 +204,7 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 				if(_player->hasItem(keyword)) {
 					_player->removeItem(getItemByName(keyword));
 					int random = rand() % 4 + 1;
-					_currentSetting->addItem(getItemByName(keyword), random);
+					_player->_location->addItem(getItemByName(keyword), random);
 					cout << "You have dropped your " << keyword << "\n";
 				} else {
 					cout << "You can't drop something you don't have...\n";
@@ -268,11 +269,11 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 		} else {
 			if(checkSize(userInput, 2)) {
 				// TODO: Check for characters too
-				if(_currentSetting->hasCharacter(_lookup[keyword])) {
-					cout << _currentSetting->getCharacterByPosition(_lookup[keyword])->_attackPhrase << "\n";
+				if(_player->_location->hasCharacter(_lookup[keyword])) {
+					cout << _player->_location->getCharacterByPosition(_lookup[keyword])->_attackPhrase << "\n";
 				}
-				if(_currentSetting->hasItem(_lookup[keyword])) {
-					cout << "You found " << _currentSetting->getItemByPosition(_lookup[keyword])->_description << "\n";
+				if(_player->_location->hasItem(_lookup[keyword])) {
+					cout << "You found " << _player->_location->getItemByPosition(_lookup[keyword])->_description << "\n";
 				} else {
 					cout << "There is nothing to be found here.\n";
 				}
