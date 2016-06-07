@@ -5,14 +5,13 @@
 #ifndef ADVENTUREGAME_CHEST_H
 #define ADVENTUREGAME_CHEST_H
 
-#include "../Headers/Item.h"
+#include "Container.h"
 
-class Chest : public Item {
+class Chest : public Container {
 public:
     Chest(std::string name, std::string description);
     ~Chest();
     std::string open();
-    std::string use();
 };
 
 #endif //ADVENTUREGAME_CHEST_H

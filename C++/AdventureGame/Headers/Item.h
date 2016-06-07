@@ -10,8 +10,6 @@ public:
 	std::string _description;
 	int _settingPosition;
 	int _weight;
-	virtual std::string open() = 0;
-	virtual std::string use() = 0;
 	friend bool operator== (const Item &i1, const Item &i2) { return i1._name == i2._name; }
 };
 #endif

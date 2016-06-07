@@ -10,9 +10,6 @@ Key::Key(std::string name, std::string description) {
 }
 Key::~Key() {
 }
-std::string Key::open() {
-	return "";
-}
 std::string Key::use() {
 	return "";
 }

@@ -51,6 +51,7 @@ public:
 	virtual std::vector<std::string> weapons() =0;
 
 	virtual void weakness(Character& src) =0; // Define the certain threats to a given class
+	std::string getClass() { return _class; }
 protected:
 	Character(std::string s) : _class(s) {};
 private:

@@ -14,7 +14,10 @@ Mage::Mage(std::string str) : Character("mage") {
 Mage::~Mage() {
 }
 void Mage::weakness(Character& src) {
-	_stats.hp = 70;
+	if(src.getClass() == "paladin") {
+		_stats.strength = 10;
+	}
+	//_stats.hp = 70;
 }
 std::vector<std::string> Mage::weapons() {
 	return {"Staff", "One-handed dagger and off-hand", "One-handed sword and off-hand"};

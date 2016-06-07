@@ -5,13 +5,12 @@
 #ifndef ADVENTUREGAME_KEY_H
 #define ADVENTUREGAME_KEY_H
 
-#include "../Headers/Item.h"
+#include "Useable.h"
 
-class Key : public Item {
+class Key : public Useable {
 public:
     Key(std::string name, std::string description);
     ~Key();
-    std::string open();
     std::string use();
 };
 

@@ -10,9 +10,6 @@ Map::Map(std::string name, std::string description) {
 }
 Map::~Map() {
 }
-std::string Map::open() {
-	return "";
-}
 std::string Map::use() {
 	return "";
 }

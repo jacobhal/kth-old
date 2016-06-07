@@ -5,13 +5,12 @@
 #ifndef ADVENTUREGAME_SCROLL_H
 #define ADVENTUREGAME_SCROLL_H
 
-#include "../Headers/Item.h"
+#include "Useable.h"
 
-class Scroll : public Item {
+class Scroll : public Useable {
 public:
     Scroll(std::string name, std::string description);
     ~Scroll();
-    std::string open();
     std::string use();
 };
 

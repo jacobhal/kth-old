@@ -10,9 +10,6 @@ Scroll::Scroll(std::string name, std::string description) {
 }
 Scroll::~Scroll() {
 }
-std::string Scroll::open() {
-	return "";
-}
 std::string Scroll::use() {
 	return "";
 }

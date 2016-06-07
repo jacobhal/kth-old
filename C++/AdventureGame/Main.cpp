@@ -32,6 +32,8 @@
 #include <time.h>
 #include <limits>
 
+
+
 using std::cout;
 using std::cin;
 using std::vector;
@@ -62,8 +64,8 @@ int main()
 {
 cout << "Welcome to World of Adrian, a boring MMO game, please choose what class you would like to play: \n";
 cout << "(1) Priest" << "\n";
-cout << "(2) Paladin" << "\n"; 
-cout << "(3) DeathKnight" << "\n"; 
+cout << "(2) Paladin" << "\n";
+cout << "(3) DeathKnight" << "\n";
 
 // Create new player
 
@@ -78,21 +80,21 @@ while (!b) {
 	cout << RESET;
 	switch (c)
 	{
-		case 1: 
+		case 1:
 		{
 			cout << "You chose Priest! \n";
 			player = new Priest();
 			b = 1;
 		    break;
 		}
-		case 2: 
+		case 2:
 		{
 			cout << "You chose Paladin! \n";
 			player = new Paladin();
 			b = 1;
 		    break;
 		}
-		case 3: 
+		case 3:
 		{
 			cout << "You chose Death Knight! \n";
 			player = new DeathKnight();
@@ -115,7 +117,7 @@ while (!b) {
 cout << "Before your journey begins you must choose your weapon of choice: \n";
 vector<string> weps = player->weapons();
 for(int i = 0; i < weps.size(); ++i) {
-	cout << "(" << i + 1 << ") " <<  weps[i] << "\n"; 
+	cout << "(" << i + 1 << ") " <<  weps[i] << "\n";
 }
 
 cout << MAGENTA;
@@ -129,7 +131,7 @@ while (c > weps.size() || !cin) {
 	cin >> c;
 }
 	// Choice of weapon is always wise...
-cout << "You chose " << weps[c-1] << ", a wise choice!\n"; 
+cout << "You chose " << weps[c-1] << ", a wise choice!\n";
 cout << "Let the journey begin! Type help to see all available commands and call a specific command with " <<
 		"the -h option to see a more detailed description of what it does.\n";
 

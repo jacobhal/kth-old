@@ -5,13 +5,12 @@
 #ifndef ADVENTUREGAME_MAP_H
 #define ADVENTUREGAME_MAP_H
 
-#include "../Headers/Item.h"
+#include "Useable.h"
 
-class Map : public Item {
+class Map : public Useable {
 public:
     Map(std::string name, std::string description);
     ~Map();
-    std::string open();
     std::string use();
 };
 

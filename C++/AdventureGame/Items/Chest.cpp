@@ -13,6 +13,3 @@ Chest::~Chest() {
 std::string Chest::open() {
 	return "";
 }
-std::string Chest::use() {
-	return "";
-}
