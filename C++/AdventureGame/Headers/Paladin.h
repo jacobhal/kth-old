@@ -14,7 +14,7 @@ public:
     Paladin(std::string, std::string);
     ~Paladin();
     float weakness(Character& src);
-    std::vector<std::string> weapons();
+    std::vector<Equipment*> weapons();
 };
 
 #endif //ADVENTUREGAME_PALADIN_H

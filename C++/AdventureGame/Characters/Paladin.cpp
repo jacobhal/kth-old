@@ -24,7 +24,9 @@ float Paladin::weakness(Character& src) {
 
 	return modifier;
 }
-std::vector<std::string> Paladin::weapons() {
-	return {"Two-handed mace", "One-handed sword and shield"};
+std::vector<Equipment*> Paladin::weapons() {
+	Equipment *twohmace = new Equipment("Two-handed mace", "A big ass 2h mace", 20, 20, 20);
+	Equipment *swordshield = new Equipment("One-handed sword and shield", "A basic sword and a shield", 18, 25, 15);
+	return {twohmace, swordshield};
 }
 

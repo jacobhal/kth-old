@@ -14,7 +14,7 @@ public:
     Beast(std::string str, std::string);
     ~Beast();
     float weakness(Character& src);
-    std::vector<std::string> weapons();
+    std::vector<Equipment*> weapons();
 };
 
 #endif //ADVENTUREGAME_BEAST_H

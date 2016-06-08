@@ -15,6 +15,10 @@ float Boss::weakness(Character &src) {
     return 1;
 }
 
+std::vector<Equipment*> Boss::weapons() {
+
+}
+
 void Boss::dropItems() {
     if(_inventory.size() > 0) {
         std::cout << _name << " dropped:" << std::endl;

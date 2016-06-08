@@ -8,10 +8,12 @@
 #include "Setting.h"
 #include "Useable.h"
 #include "Container.h"
+#include "Equipment.h"
 
 class Setting;
 class Useable;
 class Container;
+class Equipment;
 
 struct Stats {
 	int hp;
@@ -31,6 +33,7 @@ public:
 	int 						_settingPosition;
 	std::string					_voiceLine;
 	std::string 				_name;
+	Equipment*					_weapon;
 
 	virtual ~Character(); // Even pure virtual destructors must be defined
 
@@ -72,7 +75,7 @@ public:
 	std::string attack(Character & ch);
 	int fight(Character & ch);
 
-	virtual std::vector<std::string> weapons() =0;
+	virtual std::vector<Equipment*> weapons() = 0;
 
 	virtual float weakness(Character& src) =0; // Define the certain threats to a given class
 protected:

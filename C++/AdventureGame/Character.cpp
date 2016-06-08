@@ -81,7 +81,6 @@ std::string Character::talkTo(Character & ch) const{
     return ch._voiceLine;
 }
 
-
 std::string Character::attack(Character & ch) {
     float modifier = weakness(ch);
     int damage = 0.5*(getStats().strength * modifier) * (rand() % 2 + 1);

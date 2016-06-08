@@ -8,7 +8,6 @@
 
 class Boss : public Character {
 protected:
-    std::vector<Item*>  _lootTable;
     std::string         _voiceLineDeath;
 
 public:
@@ -16,6 +15,7 @@ public:
     virtual ~Boss();
 
     float weakness(Character & src);
+    std::vector<Equipment*> weapons();
     void dropItems();
 
 };

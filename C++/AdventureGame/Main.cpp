@@ -3,6 +3,7 @@
 #include "Setting.h"
 #include "Headers/Item.h"
 #include "Headers/GameEngine.h"
+#include "Equipment.h"
 
 
 // Make header files later
@@ -21,6 +22,7 @@
 #include "Orgrimmar.h"
 #include "Icecrown.h"
 #include "Onyxia.h"
+
 // Characters
 #include "Paladin.h"
 #include "Priest.h"
@@ -112,9 +114,9 @@ while (!b) {
 
 // Let player choose weapon
 cout << "Before your journey begins you must choose your weapon of choice: \n";
-vector<string> weps = player->weapons();
+vector<Equipment*> weps = player->weapons();
 for(int i = 0; i < weps.size(); ++i) {
-    cout << "(" << i + 1 << ") " <<  weps[i] << "\n";
+    cout << "(" << i + 1 << ") " <<  *weps[i] << "\n";
 }
 
 cin >> c;
@@ -126,7 +128,8 @@ while (c > weps.size() || !cin) {
     cin >> c;
 }
     // Choice of weapon is always wise...
-cout << "You chose " << weps[c-1] << ", a wise choice!\n"; 
+player->_weapon = weps[c-1];
+cout << "You chose " << *weps[c-1] << ", a wise choice!\n";
 cout << "Let the journey begin! Type help to see all available commands and call a specific command with " <<
         "the -h option to see a more detailed description of what it does.\n";
 

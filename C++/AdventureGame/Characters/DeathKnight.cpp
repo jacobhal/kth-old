@@ -24,8 +24,10 @@ float DeathKnight::weakness(Character& src) {
 
 	return modifier;
 }
-std::vector<std::string> DeathKnight::weapons() {
-	return {"Two-handed broadsword", "Two one-handed swords"};
+std::vector<Equipment*> DeathKnight::weapons() {
+	Equipment *twohsword = new Equipment("Two-handed broadsword", "BFS", 20, 20, 25);
+	Equipment *two1hsword = new Equipment("Two one-handed swords", "Slice dat shit", 15, 15, 27);
+	return {twohsword, two1hsword};
 }
 
 
