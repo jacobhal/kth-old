@@ -56,7 +56,6 @@ void Character::useItem(Useable *item) {
     // TODO: Check that player has item and add functionality in item files
     if(hasItem(item->_name)) {
         std::cout << item->use(this) << std::endl;
-        removeItem(item);
     }
 }
 
@@ -65,6 +64,24 @@ void Character::openItem(Container *item) {
     if(hasItem(item->_name)) {
         std::cout << item->open(this) << std::endl;
         removeItem(item);
+    }
+}
+
+void Character::equipItem(Equipment *item) {
+    _weapon          = item;
+    _stats.hp       += item->_hpMod;
+    _stats.strength += item->_strMod;
+
+}
+
+void Character::dropItems() {
+    if (_inventory.size() > 0) {
+        std::cout << _name << " dropped:" << std::endl;
+
+        for (int i = 0; i < _inventory.size(); ++i) {
+            _location->addItem(_inventory[i], _settingPosition);
+            std::cout << _inventory[i]->_name << std::endl;
+        }
     }
 }
 

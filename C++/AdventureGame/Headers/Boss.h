@@ -16,7 +16,11 @@ public:
 
     float weakness(Character & src);
     std::vector<Equipment*> weapons();
-    void dropItems();
+
+    std::string getVoiceLineDeath() const{
+        return _voiceLineDeath;
+    }
+
 
 };
 

@@ -12,5 +12,6 @@ Scroll::Scroll(std::string name, std::string description) {
 Scroll::~Scroll() {
 }
 std::string Scroll::use(Character* c) {
+	c->removeItem(this);
 	return "";
 }

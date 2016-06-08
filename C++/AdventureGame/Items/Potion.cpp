@@ -18,6 +18,7 @@ Potion::~Potion() {
 std::string Potion::use(Character* c) {
     int prehp = c->getStats().hp;
     c->_stats.hp + 50 > 100 ? c->_stats.hp = 100 : c->_stats.hp += 50;
+    c->removeItem(this);
     return "Healed for " + std::to_string(c->getStats().hp - prehp) + ".";
 }
 

@@ -12,6 +12,12 @@ Key::Key(std::string name, std::string description) {
 Key::~Key() {
 }
 std::string Key::use(Character *c) {
-	c->_location->_isLocked = {0,0,0,0};
-	return "";
+	if(c->_location->_isLocked[c->_settingPosition-1] == 1) {
+		c->_location->_isLocked[c->_settingPosition-1] = 0;
+		c->removeItem(this);
+		return "Unlocked door.";
+	} else {
+		return "No door to unlock.";
+	}
+
 }

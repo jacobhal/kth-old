@@ -5,9 +5,12 @@
 
 Boss::Boss(std::string name, std::string vl, std::string vld) : Character("Boss", name, vl){
     _voiceLineDeath = vld;
+    _stats.hp = 200;
+    _stats.strength = 30;
 }
 
 Boss::~Boss() {
+    std::cout << getVoiceLineDeath() << std::endl;
     dropItems();
 }
 
@@ -19,13 +22,3 @@ std::vector<Equipment*> Boss::weapons() {
 
 }
 
-void Boss::dropItems() {
-    if(_inventory.size() > 0) {
-        std::cout << _name << " dropped:" << std::endl;
-
-        for (int i = 0; i < _inventory.size(); ++i) {
-            _location->addItem(_inventory[i], _settingPosition);
-            std::cout << _inventory[i]->_name << std::endl;
-        }
-    }
-}

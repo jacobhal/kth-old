@@ -29,6 +29,7 @@
 #include "DeathKnight.h"
 #include "Mage.h"
 #include "Beast.h"
+#include "Boss.h"
 
 
 // Non-program includes
@@ -128,7 +129,7 @@ while (c > weps.size() || !cin) {
     cin >> c;
 }
     // Choice of weapon is always wise...
-player->_weapon = weps[c-1];
+player->equipItem(weps[c-1]);
 cout << "You chose " << *weps[c-1] << ", a wise choice!\n";
 cout << "Let the journey begin! Type help to see all available commands and call a specific command with " <<
         "the -h option to see a more detailed description of what it does.\n";
@@ -136,18 +137,25 @@ cout << "Let the journey begin! Type help to see all available commands and call
 // Create characters & environment & items and start the game engine
 
 // Create characters
-Character *tyrael = new Paladin("The mighty paladin tyrael is here to aid you!", "Tyrael");
-Character *jaina = new Mage("Jaina, the powerful mage stands before you and begins to cast a fireball!", "Jaina");
-Character *lichKing = new DeathKnight("Lich King, a mighty foe stands in your way. Choose what to do, and quick!", "LichKing");
-Character *benedictus = new Priest("The priest benedictus provides you with bandages!", "Benedictus");
-Character *basilisk = new Beast("A hostile basilisk gets ready to attack.", "Beast");
+Character *tyrael = new Paladin("Hey duuudeee, I got something for you, but you need to figure out how to get it. XDDDDD", "Tyrael");
+Character *jaina = new Mage("Champion! I need your help! Defeat the ugly ogre to the south and I will reward you greatly.", "Jaina");
+Character *benedictus = new Priest("Greetings traveler, I hear that if you're looking to increase your power you should travel to Gurubashi. Lots of good drugs there.", "Benedictus");
+
+// Bosses
+Character *basilisk = new Boss("Basilisk", "HISSSSSS (A basilisk stands in your way. Defend yourself!)", "*SQUEAL*");
+Character *lichKing = new Boss("LichKing", "Lich King, a mighty foe stands in your way. Choose what to do, and quick!", "Ice... Cold...");
+Character *onyxia = new Boss("Onyxia", "Foolish mortals! Perish in fire!", "Bwleeuuughhh!");
+Character *shrek = new Boss("Shrek", "GET OUT OF MY SWAMMPPPP!", "It's all ogre now...");
+
 
 // Create items
 Item *key = new Key("key", "a key to unlock secret doors with");
-Item *chest = new Chest("chest", "a chest with unknown content", key);
-Item *scroll = new Scroll("scroll", "a scroll which can be used to teleport back to where you started");
+Item *scroll = new Scroll("scroll", "A scroll which when used permanently increases your stats.");
 Item *map = new Map("map", "a map to guide you through this adventure");
 Item *potion = new Potion("potion", "a healing potion");
+Item *sword = new Equipment("Frostmourne", "A sword containing the souls of thousands of the Lich Kings foes.", 30, 50, 50);
+Item *chest = new Chest("chest", "a chest with unknown content", potion);
+
 
 std::vector<Item*> items;
 items.push_back(key);
@@ -155,6 +163,14 @@ items.push_back(chest);
 items.push_back(scroll);
 items.push_back(map);
 items.push_back(potion);
+items.push_back(sword);
+
+// Add items to characters
+basilisk->addItem(potion);
+tyrael->addItem(key);
+jaina->addItem(scroll);
+lichKing->addItem(sword);
+lichKing->addItem(key);
 
 
 // Add settings with optional characters items
@@ -163,14 +179,14 @@ Setting *gurubashi = new Gurubashi("Gurubashi", "Gurubashi, the arena where cham
 Setting *icecrown = new Icecrown("Icecrown", "Icecrown, the chilling castle where Lich King rules.");
 Setting *orgrimmar = new Orgrimmar("Orgrimmar", "Orgrimmar, the famous capital city of the Hordes. The leader Thrall might be found somewhere around.");
 Setting *woods = new Woods("Woods", "The dark woods, infamous for its dark creatures lurking around.");
-Setting *onyxia = new Onyxia("Onyxia's lair", "Onyxia's lair, the lair of the mighty dragon Onyxia");
+Setting *onyxiaslair = new Onyxia("Onyxia's lair", "Onyxia's lair, the lair of the mighty dragon Onyxia");
 
 // Setup routes (inverses too)
 ruins->addRoute(icecrown, "north");
 icecrown->addRoute(ruins, "south");
 
-ruins->addRoute(gurubashi, "east");
-gurubashi->addRoute(ruins, "west");
+ruins->addRoute(woods, "east");
+woods->addRoute(ruins, "west");
 
 ruins->addRoute(orgrimmar, "south");
 orgrimmar->addRoute(ruins, "north");
@@ -178,8 +194,11 @@ orgrimmar->addRoute(ruins, "north");
 woods->addRoute(gurubashi, "east");
 gurubashi->addRoute(woods, "west");
 
-icecrown->addRoute(onyxia, "west");
-onyxia->addRoute(icecrown, "east");
+icecrown->addRoute(onyxiaslair, "west");
+onyxiaslair->addRoute(icecrown, "east");
+
+ruins->lockRoute(1); // Lock north route
+icecrown->lockRoute(2); // Lock west route
 
 // Maybe add subsettings too?
 int c1 = rand() % 4 + 1;
@@ -188,25 +207,26 @@ int c3 = rand() % 4 + 1;
 int c4 = rand() % 4 + 1;
 int c5 = rand() % 4 + 1;
 
-ruins->addCharacter(tyrael, c1);
-gurubashi->addCharacter(jaina, c2);
-icecrown->addCharacter(lichKing, c3);
-orgrimmar->addCharacter(benedictus, c4);
-woods->addCharacter(basilisk, c5);
+// Add characters to zones (1: North, 2: West, 3: South, 4: East)
+ruins->addCharacter(tyrael, 2);
+gurubashi->addCharacter(jaina, 1);
+icecrown->addCharacter(lichKing, 1);
+orgrimmar->addCharacter(benedictus, 3);
+woods->addCharacter(basilisk, 2);
+onyxiaslair->addCharacter(onyxia, 2);
+gurubashi->addCharacter(shrek, 3);
 
 
 // Player starting items
-player->addItem(map);
-player->addItem(potion);
+
 
 // Setting items
 int l1 = rand() % 4 + 1;
 int l2 = rand() % 4 + 1;
 int l3 = rand() % 4 + 1;
 // 1: north 2: west 3: south 4: east
-ruins->addItem(scroll, l1);
-icecrown->addItem(chest, l2);
-orgrimmar->addItem(key, l3);
+woods->addItem(chest, 1);
+orgrimmar->addItem(map, 4);
 // Idea is to use look to try and find specific items but using look also means risk to face hostile NPCs
 
 

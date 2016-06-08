@@ -9,13 +9,13 @@
 #include "Character.h"
 
 class Equipment : public Item {
-protected:
+public:
     int _hpMod;
     int _strMod;
 
-public:
     Equipment(std::string name, std::string desc, int weight, int stam, int str);
     virtual ~Equipment();
+
 
 };
 

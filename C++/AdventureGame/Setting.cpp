@@ -109,6 +109,15 @@ std::vector<std::string> Setting::getRoutes() const {
     }
     return v;
 }
+
+void Setting::lockRoute(int i) {
+    this->_isLocked[i-1] = 1;
+}
+
+void Setting::unlockRoute(int i) {
+    this->_isLocked[i-1] = 0;
+}
+
 // Character methods
 void Setting::addCharacter(Character *character, int position) {
     character->_settingPosition = position;

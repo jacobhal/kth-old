@@ -37,6 +37,8 @@ public:
 	Setting* hasRoute(std::string keyword);
 	Setting* move(Character* character, std::string keyword);
 	std::vector<std::string> getRoutes() const;
+	void lockRoute(int);
+	void unlockRoute(int);
 
 	// Character methods
 	void addCharacter(Character *character, int position);

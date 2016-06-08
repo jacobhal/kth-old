@@ -124,6 +124,7 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			cout << _descriptions["go"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
+				_player->_settingPosition = _lookup[keyword];
 				if(_player->_location->hasRoute(keyword) && !_player->_location->_isLocked[_lookup[keyword]-1]) {
 					auto it = _player->_location->move(_player, keyword);
 					if(it != NULL) {
@@ -186,11 +187,18 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 		} else {
 			if(checkSize(userInput, 2)) {
 				if(_player->_location->hasCharacter(keyword)) {
-					if(_player->fight(*_player->_location->getCharacterByName(keyword))) {
-						_player->_location->removeCharacter(_player->_location->getCharacterByName(keyword));
-					} else {
-						std::cout << "Game over..." << std::endl;
-						_isRunning = false;
+					switch(_player->fight(*_player->_location->getCharacterByName(keyword))) {
+						case 1:
+							_player->_location->removeCharacter(_player->_location->getCharacterByName(keyword));
+							break;
+						case -1:
+							std::cout << "Game over..." << std::endl;
+							_isRunning = false;
+							break;
+						case 0:
+							break;
+						default:
+							writeError("Invalid return value from Character::fight()", BOLDRED);
 					}
 				} else {
 					writeError("Character does not exists in this zone (" + _player->_location->_name + ").", BOLDRED);
@@ -285,15 +293,26 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			cout << _descriptions["look"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
+				_player->_settingPosition = _lookup[keyword];
+				bool found = false;
 				// TODO: Check for characters too
 				if(_player->_location->hasCharacter(_lookup[keyword])) {
+					found = true;
 					cout << _player->_location->getCharacterByPosition(_lookup[keyword])->_attackPhrase << "\n";
 				}
 				if(_player->_location->hasItem(_lookup[keyword])) {
+					found = true;
 					cout << "You found " << _player->_location->getItemByPosition(_lookup[keyword])->_description << "\n";
-				} else {
-					cout << "There is nothing to be found here.\n";
 				}
+				if(_player->_location->_isLocked[_player->_settingPosition-1]) {
+					found = true;
+					cout << "A door blocks the passage." << std::endl;
+				}
+
+				if(!found) {
+					cout << "There is nothing to be found here." << std::endl;
+				}
+
 			} else {
 				writeError("Invalid format.", BOLDRED);
 			}
