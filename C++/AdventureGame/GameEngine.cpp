@@ -213,7 +213,14 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			cout << _descriptions["wave"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
-
+				if(_player->_settingPosition == _player->_location->getCharacterByName("Tyrael")->_settingPosition) {
+					if (_player->_location->_name == "Ruins" &&
+						_player->_location->getCharacterByName("Tyrael")->hasItem("key")) {
+						_player->_location->getCharacterByName("Tyrael")->removeItem(getItemByName("key"));
+						_player->addItem(getItemByName("key"));
+						cout << "Here's a key that will be necessary in order to continue your adventure!\n";
+					}
+				}
 			} else {
 				writeError("Invalid format.", BOLDRED);
 			}

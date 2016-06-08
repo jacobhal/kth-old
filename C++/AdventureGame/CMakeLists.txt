@@ -5,9 +5,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 include_directories(Headers)
 
-set(ITEM_FILES Items/Chest.cpp Items/Key.cpp Items/Map.cpp Items/Scroll.cpp Items/Potion.cpp)
-set(SETTING_FILES Settings/Gurubashi.cpp Settings/Icecrown.cpp Settings/Orgrimmar.cpp Settings/Ruins.cpp Settings/Woods.cpp)
-set(CHARACTER_FILES Characters/Beast.cpp Characters/DeathKnight.cpp Characters/Mage.cpp Characters/Paladin.cpp Characters/Priest.cpp)
+set(ITEM_FILES Items/Chest.cpp Items/Key.cpp Items/Map.cpp Items/Scroll.cpp Items/Potion.cpp Items/Equipment.cpp)
+set(SETTING_FILES Settings/Gurubashi.cpp Settings/Icecrown.cpp Settings/Orgrimmar.cpp Settings/Ruins.cpp Settings/Woods.cpp Settings/Onyxia.cpp)
+set(CHARACTER_FILES Characters/Beast.cpp Characters/DeathKnight.cpp Characters/Mage.cpp Characters/Paladin.cpp Characters/Priest.cpp Characters/Boss.cpp)
 
 set(SOURCE_FILES Main.cpp GameEngine.cpp Setting.cpp Character.cpp ${ITEM_FILES} ${SETTING_FILES} ${CHARACTER_FILES})
 # GameEngine.cpp Headers/Character.h Headers/GameEngine.h Headers/Item.h Headers/Setting.h
