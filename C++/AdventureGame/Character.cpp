@@ -69,7 +69,7 @@ void Character::setLocation(Setting & setting) {
 }
 
 // Character methods
-std::string Character::talkTo(Character & ch) {
+std::string Character::talkTo(Character & ch) const{
     return ch._voiceLine;
 }
 

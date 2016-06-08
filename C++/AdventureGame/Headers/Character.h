@@ -65,11 +65,11 @@ public:
 	void setLocation(Setting & setting);
 
 	// Character methods
-	std::string talkTo(Character & ch);
+	std::string talkTo(Character & ch) const;
 	std::string attack(Character & ch);
 	int fight(Character & ch);
 
-	virtual std::vector<std::string> weapons() =0;
+	virtual std::vector<std::string> weapons();
 
 	virtual float weakness(Character& src) =0; // Define the certain threats to a given class
 protected:
