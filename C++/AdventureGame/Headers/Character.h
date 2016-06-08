@@ -7,9 +7,11 @@
 #include "Item.h"
 #include "Setting.h"
 #include "Useable.h"
+#include "Container.h"
 
 class Setting;
 class Useable;
+class Container;
 
 struct Stats {
 	int hp;
@@ -57,6 +59,7 @@ public:
 	void addItem(Item *item);
 	void removeItem(Item *item);
 	void useItem(Useable *item);
+	void openItem(Container *item);
 	// TODO Fixa
 	Item* getItemByName(std::string n);
 
@@ -69,7 +72,7 @@ public:
 	std::string attack(Character & ch);
 	int fight(Character & ch);
 
-	virtual std::vector<std::string> weapons();
+	virtual std::vector<std::string> weapons() =0;
 
 	virtual float weakness(Character& src) =0; // Define the certain threats to a given class
 protected:

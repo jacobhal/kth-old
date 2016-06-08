@@ -8,7 +8,7 @@
 
 class Boss : public Character {
 protected:
-    std::vector<*Item>  _lootTable;
+    std::vector<Item*>  _lootTable;
     std::string         _voiceLineDeath;
 
 public:

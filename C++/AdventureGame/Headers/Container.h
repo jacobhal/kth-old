@@ -6,10 +6,14 @@
 #define ADVENTUREGAME_CONTAINER_H
 
 #include "Item.h"
+#include "Character.h"
+
+class Character;
 
 class Container : public Item {
 public:
-    virtual std::string open() =0;
+    Item* _containedItem;
+    virtual std::string open(Character *src) =0;
 };
 
 #endif //ADVENTUREGAME_CONTAINER_H

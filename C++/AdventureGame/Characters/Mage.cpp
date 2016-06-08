@@ -22,7 +22,8 @@ float Mage::weakness(Character& src) {
 		modifier = 0.3;
 	}
 
-	return modifier;}
+	return modifier;
+}
 std::vector<std::string> Mage::weapons() {
 	return {"Staff", "One-handed dagger and off-hand", "One-handed sword and off-hand"};
 }

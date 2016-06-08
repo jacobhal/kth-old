@@ -4,11 +4,12 @@
 
 #include <string>
 #include <vector>
-#include "Item.h"
-#include "Character.h"
 #include <time.h>
 #include <algorithm>
+#include "Item.h"
+#include "Character.h"
 #include "Setting.h"
+
 
 Setting::Setting() {
     time_t t = time(0);   // get time now

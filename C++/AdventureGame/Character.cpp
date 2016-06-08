@@ -60,6 +60,14 @@ void Character::useItem(Useable *item) {
     }
 }
 
+void Character::openItem(Container *item) {
+    // TODO: Check that player has item and add functionality in item files
+    if(hasItem(item->_name)) {
+        std::cout << item->open(this) << std::endl;
+        removeItem(item);
+    }
+}
+
 // Setting methods
 Setting* Character::currentArea() const {
     return _location;
@@ -72,6 +80,7 @@ void Character::setLocation(Setting & setting) {
 std::string Character::talkTo(Character & ch) const{
     return ch._voiceLine;
 }
+
 
 std::string Character::attack(Character & ch) {
     float modifier = weakness(ch);

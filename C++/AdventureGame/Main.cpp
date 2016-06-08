@@ -140,8 +140,8 @@ Character *benedictus = new Priest("The priest benedictus provides you with band
 Character *basilisk = new Beast("A hostile basilisk gets ready to attack.", "Beast");
 
 // Create items
-Item *key = new Key("key", "a key to unlock chests with");
-Item *chest = new Chest("chest", "a chest with unknown content");
+Item *key = new Key("key", "a key to unlock secret doors with");
+Item *chest = new Chest("chest", "a chest with unknown content", key);
 Item *scroll = new Scroll("scroll", "a scroll which can be used to teleport back to where you started");
 Item *map = new Map("map", "a map to guide you through this adventure");
 Item *potion = new Potion("potion", "a healing potion");
