@@ -63,6 +63,7 @@ GameEngine::GameEngine(Setting *setting, Character *player, std::vector<Item*> i
 		"backpack",
 		"look",
 		"quit",
+		"talk"
 	};
 	// Fill descriptions map
 	_descriptions["go"] = "'go' can be used to navigate around the world. Possible directions are north, south, east or west. Check your map to see in which directions you can move.";
@@ -78,6 +79,7 @@ GameEngine::GameEngine(Setting *setting, Character *player, std::vector<Item*> i
 	_descriptions["backpack"] = "'backpack' checks the content of your backpack. That is if you are clever enough to keep it.";
 	_descriptions["look"] = "'look' lets you check your surroundings to see if any items or NPCs are to be found. Possible directions are: north, south, east and west. Example: look west";
 	_descriptions["quit"] = "'quit' ends the game.";
+	_descriptions["talk"] = "'talk' allows you to interact with a friendly NPC.";
 	
 	_lookup["north"] = 1;
 	_lookup["west"] = 2;
@@ -191,6 +193,10 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 				if(_player->_location->hasCharacter(keyword)) {
 					switch(_player->fight(*_player->_location->getCharacterByName(keyword))) {
 						case 1:
+							if(keyword == "Onyxia") {
+								std::cout << "You have beat the game, good job!\n";
+								_isRunning = false;
+							}
 							break;
 						case -1:
 							std::cout << "Game over..." << std::endl;
@@ -213,6 +219,7 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			cout << _descriptions["wave"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
+				// TODO: Perform wave action for given character
 				if(_player->_settingPosition == _player->_location->getCharacterByName("Tyrael")->_settingPosition) {
 					if (_player->_location->_name == "Ruins" &&
 						_player->_location->getCharacterByName("Tyrael")->hasItem("key")) {
@@ -325,6 +332,12 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 				writeError("Invalid format.", BOLDRED);
 			}
 		} 
+	} else if (command == "talk") {
+		if(hasOption) {
+			cout << _descriptions["talk"] << "\n";
+		} else {
+			// TODO: Perform talk action and voiceline for given character
+		}
 	} else if (command == "quit") {
 		if(hasOption) { 
 			cout << _descriptions["quit"] << "\n";
