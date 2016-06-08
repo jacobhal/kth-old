@@ -16,6 +16,7 @@ public:
 	std::vector<Item*> 								_items;
 	std::vector<std::pair<Setting*, std::string>> 	_routes;
 	std::vector<Character*> 						_characters;
+	std::vector<bool>								_isLocked;
 
 	Setting();
 	virtual ~Setting(); // Even pure virtual destructors must be defined

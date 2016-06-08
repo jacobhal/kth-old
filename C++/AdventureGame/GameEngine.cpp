@@ -124,12 +124,14 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			cout << _descriptions["go"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
-				if(_player->_location->hasRoute(keyword)) {
+				if(_player->_location->hasRoute(keyword) && !_player->_location->_isLocked[_lookup[keyword]-1]) {
 					auto it = _player->_location->move(_player, keyword);
 					if(it != NULL) {
 						_player->_location = it;
 					}
 					cout << BOLDYELLOW << "New location \n" << RESET << _player->_location->_description << "\n";
+				} else if(_player->_location->_isLocked[_lookup[keyword]-1]) {
+					cout << "There is a locked door blocking your way\n";
 				} else {
 					cout << "There's no route in that direction!\n";
 				}

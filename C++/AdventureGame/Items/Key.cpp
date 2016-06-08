@@ -12,5 +12,6 @@ Key::Key(std::string name, std::string description) {
 Key::~Key() {
 }
 std::string Key::use(Character *c) {
+	c->_location->_isLocked = {0,0,0,0};
 	return "";
 }
