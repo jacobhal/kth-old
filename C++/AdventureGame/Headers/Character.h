@@ -78,7 +78,7 @@ public:
 	int fight(Character & ch);
 	virtual void death(){};
 
-	virtual std::vector<Equipment*> weapons() = 0;
+	virtual std::vector<Equipment> weapons() = 0;
 
 	virtual float weakness(Character& src) =0; // Define the certain threats to a given class
 protected:

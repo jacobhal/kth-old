@@ -15,7 +15,7 @@ public:
     virtual ~Boss();
 
     float weakness(Character & src);
-    std::vector<Equipment*> weapons();
+    std::vector<Equipment> weapons();
 
     void death();
 

@@ -18,6 +18,9 @@ paladin.o: Characters/Paladin.cpp Headers/Paladin.h
 priest.o: Characters/Priest.cpp Headers/Priest.h 
 	g++ $(CFLAGS) -o priest.o Characters/Priest.cpp -I$(INC_DIR)
 
+boss.o: Characters/Boss.cpp Headers/Boss.h
+	g++ $(CFLAGS) -o boss.o Characters/Boss.cpp -I$(INC_DIR)
+
 # Create setting files
 gurubashi.o: Settings/Gurubashi.cpp Headers/Gurubashi.h 
 	g++ $(CFLAGS) -o gurubashi.o Settings/Gurubashi.cpp -I$(INC_DIR)
@@ -34,6 +37,8 @@ ruins.o: Settings/Ruins.cpp Headers/Ruins.h
 woods.o: Settings/Woods.cpp Headers/Woods.h 
 	g++ $(CFLAGS) -o woods.o Settings/Woods.cpp -I$(INC_DIR)
 
+onyxia.o: Settings/Onyxia.cpp Headers/Onyxia.h
+	g++ $(CFLAGS) -o onyxia.o Settings/Onyxia.cpp -I$(INC_DIR)
 
 # Create item files
 chest.o: Items/Chest.cpp Headers/Chest.h 
@@ -48,10 +53,16 @@ map.o: Items/Map.cpp Headers/Map.h
 scroll.o: Items/Scroll.cpp Headers/Scroll.h 
 	g++ $(CFLAGS) -o scroll.o Items/Scroll.cpp -I$(INC_DIR)
 
-C = beast.o deathknight.o mage.o paladin.o priest.o
-S = gurubashi.o orgrimmar.o icecrown.o ruins.o woods.o
-I = chest.o key.o map.o scroll.o
-General = Gameengine.cpp Setting.cpp Character.cpp
+potion.o: Items/Potion.cpp Headers/Potion.h
+	g++ $(CFLAGS) -o potion.o Items/Potion.cpp -I$(INC_DIR)
+
+equipment.o: Items/Equipment.cpp Headers/Equipment.h
+	g++ $(CFLAGS) -o equipment.o Items/Equipment.cpp -I$(INC_DIR)
+
+C = beast.o deathknight.o mage.o paladin.o priest.o boss.o
+S = gurubashi.o orgrimmar.o icecrown.o ruins.o woods.o onyxia.o
+I = chest.o key.o map.o scroll.o potion.o equipment.o
+General = GameEngine.cpp Setting.cpp Character.cpp
 
 game.out: Main.cpp $(General) $(C) $(S) $(I)
 	g++ $(FLAGS) Main.cpp $(General) $(C) $(S) $(I) -I$(INC_DIR)

@@ -5,6 +5,8 @@
 #include <iostream>
 #include <regex>
 #include <sstream>
+#include <algorithm>
+#include "time.h"
 
 #define RESET   ""
 #define BOLDRED ""      /* Bold Red */

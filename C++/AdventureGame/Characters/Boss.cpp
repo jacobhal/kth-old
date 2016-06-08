@@ -30,7 +30,7 @@ float Boss::weakness(Character &src) {
     return 1;
 }
 
-std::vector<Equipment*> Boss::weapons() {
+std::vector<Equipment> Boss::weapons() {
 
 }
 

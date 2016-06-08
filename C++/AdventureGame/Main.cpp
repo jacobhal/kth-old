@@ -115,9 +115,9 @@ while (!b) {
 
 // Let player choose weapon
 cout << "Before your journey begins you must choose your weapon of choice: \n";
-vector<Equipment*> weps = player->weapons();
+vector<Equipment> weps = player->weapons();
 for(int i = 0; i < weps.size(); ++i) {
-    cout << "(" << i + 1 << ") " <<  *weps[i] << "\n";
+    cout << "(" << i + 1 << ") " <<  weps[i] << "\n";
 }
 
 cin >> c;
@@ -129,8 +129,8 @@ while (c > weps.size() || !cin) {
     cin >> c;
 }
     // Choice of weapon is always wise...
-player->equipItem(weps[c-1]);
-cout << "You chose " << *weps[c-1] << ", a wise choice!\n";
+player->equipItem(&weps[c-1]);
+cout << "You chose " << weps[c-1] << ", a wise choice!\n";
 cout << "Let the journey begin! Type help to see all available commands and call a specific command with " <<
         "the -h option to see a more detailed description of what it does.\n";
 
@@ -241,8 +241,13 @@ delete tyrael;
 delete jaina;
 delete lichKing;
 delete basilisk;
+delete shrek;
+delete onyxia;
 delete benedictus;
 delete key;
+delete map;
+delete potion;
+delete sword;
 delete chest;
 delete scroll;
 delete ruins;
@@ -250,6 +255,8 @@ delete gurubashi;
 delete icecrown;
 delete orgrimmar;
 delete woods;
+delete onyxiaslair;
+
 
 return 0;
 }

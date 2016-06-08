@@ -24,6 +24,6 @@ float Beast::weakness(Character& src) {
 
 	return modifier;
 }
-std::vector<Equipment*> Beast::weapons() {
+std::vector<Equipment> Beast::weapons() {
 	return {};
 }

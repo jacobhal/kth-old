@@ -14,7 +14,7 @@ public:
     Mage(std::string str, std::string);
     ~Mage();
     float weakness(Character& src);
-    std::vector<Equipment*> weapons();
+    std::vector<Equipment> weapons();
 };
 
 #endif //ADVENTUREGAME_MAGE_H

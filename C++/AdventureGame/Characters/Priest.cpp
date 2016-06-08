@@ -24,9 +24,9 @@ float Priest::weakness(Character& src) {
 
 	return modifier;
 }
-std::vector<Equipment*> Priest::weapons() {
-	Equipment *staff = new Equipment("Staff", "A basic staff", 10, 20, 10);
-	Equipment *daggeroh = new Equipment("One-handed dagger and off-hand", "A shitty dagger and some off-hand", 10, 10, 15);
+std::vector<Equipment> Priest::weapons() {
+	Equipment staff("Staff", "A basic staff", 10, 20, 10);
+	Equipment daggeroh("One-handed dagger and off-hand", "A shitty dagger and some off-hand", 10, 10, 15);
 	return {staff, daggeroh};
 }
 

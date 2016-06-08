@@ -14,7 +14,7 @@ public:
     DeathKnight(std::string str, std::string);
     ~DeathKnight();
     float weakness(Character& src);
-    std::vector<Equipment*> weapons();
+    std::vector<Equipment> weapons();
 };
 
 #endif //ADVENTUREGAME_DEATHKNIGHT_H
