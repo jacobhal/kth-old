@@ -15,7 +15,7 @@ private:
 	std::map<std::string, std::string> 		_descriptions;
 	Setting*								_currentSetting;
 	Character*								_player;
-	std::vector<Item*> 						_items;
+	std::vector<Item*> 				_items;
 	std::map<std::string, int> 				_lookup;
 	bool _isRunning;
 	

@@ -43,13 +43,14 @@ void Character::removeItem(Item *item){
 }
 // TODO Fixa
 Item* Character::getItemByName(std::string n) {
-    auto it = std::find_if(_inventory.begin(), _inventory.end(), [&n] (const Item* p) -> bool { return p->_name == n; });
+        auto it = std::find_if(_inventory.begin(), _inventory.end(),
+                               [&n](const Item *p) -> bool { return p->_name == n; });
 
-    if(it != _inventory.end()) {
-        return *it;
-    } else {
-        return nullptr;
-    }
+        if (it != _inventory.end()) {
+            return *it;
+        } else {
+            return nullptr;
+        }
 }
 
 void Character::useItem(Useable *item) {
@@ -113,18 +114,24 @@ int Character::fight(Character & ch) {
             continue;
         }
 
-        std::cout << "Choose your action: (1)attack, (2)flee, (3)use potion[heal for 50hp]" << std::endl;
+        std::cout << "Choose your action: (1)attack, (2)flee";
+        if(hasItem("potion")){
+            std::cout << ", (3)use potion[heal for 50hp]";
+        }
+        std::cout << std::endl;
         int c;
         std::cin >> c;
         switch(c) {
             case 1:
                 std::cout << attack(ch) << std::endl;
-                if(ch.getStats().hp <= 0) {
+                if (ch.getStats().hp <= 0) {
+                    ch.death();
+                    _location->removeCharacter(&ch);
                     std::cout << "You defeated " << ch._name << "." << std::endl;
                     return 1;
-                }else {
+                } else {
                     std::cout << ch.attack(*this) << std::endl;
-                    if(getStats().hp <= 0) {
+                    if (getStats().hp <= 0) {
                         std::cout << "You died." << std::endl;
                         return -1;
                     }
@@ -134,7 +141,9 @@ int Character::fight(Character & ch) {
                 std::cout << "You fled from " << ch._name << "." << std::endl;
                 return 0;
             case 3:
-                this->useItem(dynamic_cast<Useable*>(getItemByName("potion")));
+                if (hasItem("potion")) {
+                    this->useItem(dynamic_cast<Useable *>(getItemByName("potion")));
+                }
                 break;
             default:
                 std::cout << "Not a valid option!" << std::endl;

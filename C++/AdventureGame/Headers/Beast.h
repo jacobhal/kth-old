@@ -15,6 +15,7 @@ public:
     ~Beast();
     float weakness(Character& src);
     std::vector<Equipment*> weapons();
+
 };
 
 #endif //ADVENTUREGAME_BEAST_H

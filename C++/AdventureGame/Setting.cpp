@@ -121,6 +121,7 @@ void Setting::unlockRoute(int i) {
 // Character methods
 void Setting::addCharacter(Character *character, int position) {
     character->_settingPosition = position;
+    character->_location = this;
     _characters.push_back(character);
 }
 void Setting::removeCharacter(Character *character) {

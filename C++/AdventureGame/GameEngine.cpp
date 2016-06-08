@@ -189,7 +189,6 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 				if(_player->_location->hasCharacter(keyword)) {
 					switch(_player->fight(*_player->_location->getCharacterByName(keyword))) {
 						case 1:
-							_player->_location->removeCharacter(_player->_location->getCharacterByName(keyword));
 							break;
 						case -1:
 							std::cout << "Game over..." << std::endl;

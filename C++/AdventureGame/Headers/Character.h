@@ -74,8 +74,9 @@ public:
 
 	// Character methods
 	std::string talkTo(Character & ch) const;
-	std::string attack(Character & ch);
+	virtual std::string attack(Character & ch);
 	int fight(Character & ch);
+	virtual void death(){};
 
 	virtual std::vector<Equipment*> weapons() = 0;
 
