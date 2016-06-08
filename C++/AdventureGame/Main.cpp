@@ -20,13 +20,13 @@
 #include "Gurubashi.h"
 #include "Orgrimmar.h"
 #include "Icecrown.h"
+#include "Onyxia.h"
 // Characters
 #include "Paladin.h"
 #include "Priest.h"
 #include "DeathKnight.h"
 #include "Mage.h"
 #include "Beast.h"
-
 
 
 // Non-program includes
@@ -74,61 +74,61 @@ Character *player;
 int c;
 bool b = 0;
 while (!b) {
-	cin >> c;
-	switch (c)
-	{
-		case 1: 
-		{
-			cout << "You chose Priest! \n";
-			player = new Priest("I'm a healer!", "Lars");
-			b = 1;
-		    break;
-		}
-		case 2: 
-		{
-			cout << "You chose Paladin! \n";
-			player = new Paladin("I'm a tank!", "Olle");
-			b = 1;
-		    break;
-		}
-		case 3: 
-		{
-			cout << "You chose Death Knight! \n";
-			player = new DeathKnight("I'm DPS", "Rutger");
-			b = 1;
-		    break;
-		}
-		default:
-		{
-			cout << "That is not a valid choice. Try again." << "\n";
-			cin.clear();
-			// Ignore the rest of the line since it is wrong input
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			b = 0;
-		    break;
-		}
-	}
+    cin >> c;
+    switch (c)
+    {
+        case 1:
+        {
+            cout << "You chose Priest! \n";
+            player = new Priest("I'm a healer!", "Lars");
+            b = 1;
+            break;
+        }
+        case 2:
+        {
+            cout << "You chose Paladin! \n";
+            player = new Paladin("I'm a tank!", "Olle");
+            b = 1;
+            break;
+        }
+        case 3:
+        {
+            cout << "You chose Death Knight! \n";
+            player = new DeathKnight("I'm DPS", "Rutger");
+            b = 1;
+            break;
+        }
+        default:
+        {
+            cout << "That is not a valid choice. Try again." << "\n";
+            cin.clear();
+            // Ignore the rest of the line since it is wrong input
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            b = 0;
+            break;
+        }
+    }
 }
 
 // Let player choose weapon
 cout << "Before your journey begins you must choose your weapon of choice: \n";
 vector<string> weps = player->weapons();
 for(int i = 0; i < weps.size(); ++i) {
-	cout << "(" << i + 1 << ") " <<  weps[i] << "\n"; 
+    cout << "(" << i + 1 << ") " <<  weps[i] << "\n";
 }
 
 cin >> c;
 while (c > weps.size() || !cin) {
-	cout << "That is not a valid choice. Try again." << "\n";
-	cin.clear();
-	// Ignore the rest of the line since it is wrong input
-	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	cin >> c;
+    cout << "That is not a valid choice. Try again." << "\n";
+    cin.clear();
+    // Ignore the rest of the line since it is wrong input
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    cin >> c;
 }
-	// Choice of weapon is always wise...
+    // Choice of weapon is always wise...
 cout << "You chose " << weps[c-1] << ", a wise choice!\n"; 
 cout << "Let the journey begin! Type help to see all available commands and call a specific command with " <<
-		"the -h option to see a more detailed description of what it does.\n";
+        "the -h option to see a more detailed description of what it does.\n";
 
 // Create characters & environment & items and start the game engine
 
@@ -144,13 +144,14 @@ Item *key = new Key("key", "a key to unlock chests with");
 Item *chest = new Chest("chest", "a chest with unknown content");
 Item *scroll = new Scroll("scroll", "a scroll which can be used to teleport back to where you started");
 Item *map = new Map("map", "a map to guide you through this adventure");
-	Item *potion = new Potion("potion", "a healing potion");
+Item *potion = new Potion("potion", "a healing potion");
 
 std::vector<Item*> items;
 items.push_back(key);
 items.push_back(chest);
 items.push_back(scroll);
 items.push_back(map);
+items.push_back(potion);
 
 
 // Add settings with optional characters items
@@ -159,10 +160,14 @@ Setting *gurubashi = new Gurubashi("Gurubashi", "Gurubashi, the arena where cham
 Setting *icecrown = new Icecrown("Icecrown", "Icecrown, the chilling castle where Lich King rules.");
 Setting *orgrimmar = new Orgrimmar("Orgrimmar", "Orgrimmar, the famous capital city of the Hordes. The leader Thrall might be found somewhere around.");
 Setting *woods = new Woods("Woods", "The dark woods, infamous for its dark creatures lurking around.");
+Setting *onyxia = new Onyxia("Onyxia's lair", "Onyxia's lair, the lair of the mighty dragon Onyxia");
 
 // Setup routes (inverses too)
 ruins->addRoute(icecrown, "north");
 icecrown->addRoute(ruins, "south");
+
+ruins->addRoute(gurubashi, "east");
+gurubashi->addRoute(ruins, "west");
 
 ruins->addRoute(orgrimmar, "south");
 orgrimmar->addRoute(ruins, "north");
@@ -170,12 +175,16 @@ orgrimmar->addRoute(ruins, "north");
 woods->addRoute(gurubashi, "east");
 gurubashi->addRoute(woods, "west");
 
+icecrown->addRoute(onyxia, "west");
+onyxia->addRoute(icecrown, "east");
+
 // Maybe add subsettings too?
 int c1 = rand() % 4 + 1;
 int c2 = rand() % 4 + 1;
 int c3 = rand() % 4 + 1;
 int c4 = rand() % 4 + 1;
 int c5 = rand() % 4 + 1;
+
 ruins->addCharacter(tyrael, c1);
 gurubashi->addCharacter(jaina, c2);
 icecrown->addCharacter(lichKing, c3);
@@ -185,19 +194,20 @@ woods->addCharacter(basilisk, c5);
 
 // Player starting items
 player->addItem(map);
-	player->addItem(potion);
+player->addItem(potion);
 
 // Setting items
 int l1 = rand() % 4 + 1;
 int l2 = rand() % 4 + 1;
 int l3 = rand() % 4 + 1;
+// 1: north 2: west 3: south 4: east
 ruins->addItem(scroll, l1);
 icecrown->addItem(chest, l2);
 orgrimmar->addItem(key, l3);
 // Idea is to use look to try and find specific items but using look also means risk to face hostile NPCs
 
 
-// Start the game for player at specified area
+// Start the game for player at specified area with these items
 GameEngine *game = new GameEngine(orgrimmar, player, items);
 
 
