@@ -147,6 +147,8 @@ int Character::fight(Character & ch) {
                 break;
             default:
                 std::cout << "Not a valid option!" << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
 

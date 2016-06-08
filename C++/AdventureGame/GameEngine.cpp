@@ -197,6 +197,10 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 								std::cout << "You have beat the game, good job!\n";
 								_isRunning = false;
 							}
+							if(keyword == "LichKing") {
+								std::cout << "It appears the door to Onyxia's lair has opened!\n";
+								_player->_location->unlockRoute(2);
+							}
 							break;
 						case -1:
 							std::cout << "Game over..." << std::endl;
