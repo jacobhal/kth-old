@@ -27,8 +27,21 @@ public:
 	std::string					_attackPhrase;
 	int 						_maxWeight;
 	int 						_settingPosition;
+	std::string					_voiceLine;
+	std::string 				_name;
 
 	virtual ~Character(); // Even pure virtual destructors must be defined
+
+	std::string getClass() {
+		return _class;
+	}
+
+	Stats getStats() {
+		return _stats;
+	}
+
+
+
 
 	// Item methods
 	/*
@@ -45,18 +58,22 @@ public:
 	void removeItem(Item *item);
 	void useItem(Useable *item);
 	// TODO Fixa
-	Item* getItemByName(std::string n) const;
+	Item* getItemByName(std::string n);
 
 	// Setting methods
 	Setting* currentArea() const;
 	void setLocation(Setting & setting);
 
+	// Character methods
+	std::string talkTo(Character & ch);
+	std::string attack(Character & ch);
+	int fight(Character & ch);
+
 	virtual std::vector<std::string> weapons() =0;
 
-	virtual void weakness(Character& src) =0; // Define the certain threats to a given class
-	std::string getClass() { return _class; }
+	virtual float weakness(Character& src) =0; // Define the certain threats to a given class
 protected:
-	Character(std::string s) : _class(s) {};
+	Character(std::string s, std::string s2 = "noname", std::string s3 = "*shrug*") : _class(s), _name(s2), _voiceLine(s3) {};
 private:
     const std::string _class;
 

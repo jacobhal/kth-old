@@ -16,6 +16,8 @@ Potion::Potion(std::string name, std::string description) {
 Potion::~Potion() {
 }
 std::string Potion::use(Character* c) {
-    return "";
+    int prehp = c->getStats().hp;
+    c->_stats.hp + 50 > 100 ? c->_stats.hp = 100 : c->_stats.hp += 50;
+    return "Healed for " + std::to_string(c->getStats().hp - prehp) + ".";
 }
 

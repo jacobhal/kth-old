@@ -3,9 +3,12 @@
 
 using std::cout;
 
-Beast::Beast() : Character("beast") {
+Beast::Beast() : Character("Beast") {
+	int power = 40;
+	_stats = {100, 70, 50, power};
+	_maxWeight = power*3;
 }
-Beast::Beast(std::string str) : Character("beast") {
+Beast::Beast(std::string str, std::string name) : Character("Beast", name) {
 	_attackPhrase = str;
 	int power = 40;
 	_stats = {100, 70, 50, power};
@@ -13,8 +16,13 @@ Beast::Beast(std::string str) : Character("beast") {
 }
 Beast::~Beast() {
 }
-void Beast::weakness(Character& src) {
-	_stats.hp = 70;
+float Beast::weakness(Character& src) {
+	float modifier = 1;
+	if(src.getClass() == "mage") {
+		modifier = 0.3;
+	}
+
+	return modifier;
 }
 std::vector<std::string> Beast::weapons() {
 	return {};

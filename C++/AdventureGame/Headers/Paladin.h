@@ -11,9 +11,9 @@ class Paladin : public Character {
 
 public:
     Paladin();
-    Paladin(std::string str);
+    Paladin(std::string, std::string);
     ~Paladin();
-    void weakness(Character& src);
+    float weakness(Character& src);
     std::vector<std::string> weapons();
 };
 

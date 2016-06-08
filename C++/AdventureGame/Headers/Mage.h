@@ -11,9 +11,9 @@ class Mage : public Character {
 
 public:
     Mage();
-    Mage(std::string str);
+    Mage(std::string str, std::string);
     ~Mage();
-    void weakness(Character& src);
+    float weakness(Character& src);
     std::vector<std::string> weapons();
 };
 

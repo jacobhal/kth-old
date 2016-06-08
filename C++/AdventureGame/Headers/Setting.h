@@ -41,6 +41,8 @@ public:
 	void addCharacter(Character *character, int position);
 	void removeCharacter(Character *character);
 	bool hasCharacter(int position);
+	bool hasCharacter(std::string name);
 	Character* getCharacterByPosition(int position);
+	Character* getCharacterByName(std::string name);
 };
 #endif

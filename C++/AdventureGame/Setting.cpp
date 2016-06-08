@@ -4,10 +4,10 @@
 
 #include <string>
 #include <vector>
-#include <time.h>
-#include <algorithm>
 #include "Item.h"
 #include "Character.h"
+#include <time.h>
+#include <algorithm>
 #include "Setting.h"
 
 Setting::Setting() {
@@ -123,6 +123,15 @@ bool Setting::hasCharacter(int position) {
     }
     return false;
 }
+
+bool Setting::hasCharacter(std::string name) {
+    for(int i = 0; i < _characters.size(); ++i) {
+        if(_characters[i]->_name == name)
+            return true;
+    }
+    return false;
+}
+
 Character* Setting::getCharacterByPosition(int position) {
     auto it = std::find_if(_characters.begin(), _characters.end(), [&position] (const Character* p) -> bool { return p->_settingPosition == position; });
 
@@ -133,5 +142,14 @@ Character* Setting::getCharacterByPosition(int position) {
     }
 }
 
+Character* Setting::getCharacterByName(std::string name) {
+    auto it = std::find_if(_characters.begin(), _characters.end(), [&name] (const Character* p) -> bool { return p->_name == name; });
+
+    if(it != _characters.end()) {
+        return *it;
+    } else {
+        return nullptr;
+    }
+}
 
 

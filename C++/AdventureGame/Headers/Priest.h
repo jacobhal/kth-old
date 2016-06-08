@@ -11,9 +11,9 @@ class Priest : public Character {
 
 public:
     Priest();
-    Priest(std::string str);
+    Priest(std::string str, std::string);
     ~Priest();
-    void weakness(Character& src);
+    float weakness(Character& src);
     std::vector<std::string> weapons();
 };
 

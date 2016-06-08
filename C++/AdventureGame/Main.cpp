@@ -12,6 +12,7 @@
 #include "Chest.h"
 #include "Key.h"
 #include "Map.h"
+#include "Potion.h"
 
 // Settings
 #include "Ruins.h"
@@ -32,27 +33,25 @@
 #include <time.h>
 #include <limits>
 
-
-
 using std::cout;
 using std::cin;
 using std::vector;
 using std::string;
 
 // Ubuntu/Linux/Mac color codes to spice things up
-#define RESET   "\033[0m"
+#define RESET   ""
 #define BLACK   "\033[30m"      /* Black */
 #define RED     "\033[31m"      /* Red */
 #define GREEN   "\033[32m"      /* Green */
 #define YELLOW  "\033[33m"      /* Yellow */
 #define BLUE    "\033[34m"      /* Blue */
-#define MAGENTA "\033[35m"      /* Magenta */
+#define MAGENTA ""      /* Magenta */
 #define CYAN    "\033[36m"      /* Cyan */
 #define WHITE   "\033[37m"      /* White */
 #define BOLDBLACK   "\033[1m\033[30m"      /* Bold Black */
-#define BOLDRED     "\033[1m\033[31m"      /* Bold Red */
-#define BOLDGREEN   "\033[1m\033[32m"      /* Bold Green */
-#define BOLDYELLOW  "\033[1m\033[33m"      /* Bold Yellow */
+#define BOLDRED     ""      /* Bold Red */
+#define BOLDGREEN   ""      /* Bold Green */
+#define BOLDYELLOW  ""      /* Bold Yellow */
 #define BOLDBLUE    "\033[1m\033[34m"      /* Bold Blue */
 #define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
 #define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
@@ -64,8 +63,8 @@ int main()
 {
 cout << "Welcome to World of Adrian, a boring MMO game, please choose what class you would like to play: \n";
 cout << "(1) Priest" << "\n";
-cout << "(2) Paladin" << "\n";
-cout << "(3) DeathKnight" << "\n";
+cout << "(2) Paladin" << "\n"; 
+cout << "(3) DeathKnight" << "\n"; 
 
 // Create new player
 
@@ -75,35 +74,33 @@ Character *player;
 int c;
 bool b = 0;
 while (!b) {
-	cout << MAGENTA;
 	cin >> c;
-	cout << RESET;
 	switch (c)
 	{
-		case 1:
+		case 1: 
 		{
 			cout << "You chose Priest! \n";
-			player = new Priest();
+			player = new Priest("I'm a healer!", "Lars");
 			b = 1;
 		    break;
 		}
-		case 2:
+		case 2: 
 		{
 			cout << "You chose Paladin! \n";
-			player = new Paladin();
+			player = new Paladin("I'm a tank!", "Olle");
 			b = 1;
 		    break;
 		}
-		case 3:
+		case 3: 
 		{
 			cout << "You chose Death Knight! \n";
-			player = new DeathKnight();
+			player = new DeathKnight("I'm DPS", "Rutger");
 			b = 1;
 		    break;
 		}
 		default:
 		{
-			cout << BOLDRED << "That is not a valid choice. Try again." << RESET << "\n";
+			cout << "That is not a valid choice. Try again." << "\n";
 			cin.clear();
 			// Ignore the rest of the line since it is wrong input
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -117,38 +114,37 @@ while (!b) {
 cout << "Before your journey begins you must choose your weapon of choice: \n";
 vector<string> weps = player->weapons();
 for(int i = 0; i < weps.size(); ++i) {
-	cout << "(" << i + 1 << ") " <<  weps[i] << "\n";
+	cout << "(" << i + 1 << ") " <<  weps[i] << "\n"; 
 }
 
-cout << MAGENTA;
 cin >> c;
-cout << RESET;
 while (c > weps.size() || !cin) {
-	cout << BOLDRED << "That is not a valid choice. Try again." << RESET << "\n";
+	cout << "That is not a valid choice. Try again." << "\n";
 	cin.clear();
 	// Ignore the rest of the line since it is wrong input
 	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	cin >> c;
 }
 	// Choice of weapon is always wise...
-cout << "You chose " << weps[c-1] << ", a wise choice!\n";
+cout << "You chose " << weps[c-1] << ", a wise choice!\n"; 
 cout << "Let the journey begin! Type help to see all available commands and call a specific command with " <<
 		"the -h option to see a more detailed description of what it does.\n";
 
 // Create characters & environment & items and start the game engine
 
 // Create characters
-Character *tyrael = new Paladin("The mighty paladin tyrael is here to aid you!");
-Character *jaina = new Mage("Jaina, the powerful mage stands before you and begins to cast a fireball!");
-Character *lichKing = new DeathKnight("Lich King, a mighty foe stands in your way. Choose what to do, and quick!");
-Character *benedictus = new Priest("The priest benedictus provides you with bandages!");
-Character *basilisk = new Beast("A hostile basilisk gets ready to attack.");
+Character *tyrael = new Paladin("The mighty paladin tyrael is here to aid you!", "Tyrael");
+Character *jaina = new Mage("Jaina, the powerful mage stands before you and begins to cast a fireball!", "Jaina");
+Character *lichKing = new DeathKnight("Lich King, a mighty foe stands in your way. Choose what to do, and quick!", "LichKing");
+Character *benedictus = new Priest("The priest benedictus provides you with bandages!", "Benedictus");
+Character *basilisk = new Beast("A hostile basilisk gets ready to attack.", "Beast");
 
 // Create items
 Item *key = new Key("key", "a key to unlock chests with");
 Item *chest = new Chest("chest", "a chest with unknown content");
 Item *scroll = new Scroll("scroll", "a scroll which can be used to teleport back to where you started");
 Item *map = new Map("map", "a map to guide you through this adventure");
+	Item *potion = new Potion("potion", "a healing potion");
 
 std::vector<Item*> items;
 items.push_back(key);
@@ -189,6 +185,7 @@ woods->addCharacter(basilisk, c5);
 
 // Player starting items
 player->addItem(map);
+	player->addItem(potion);
 
 // Setting items
 int l1 = rand() % 4 + 1;

@@ -5,15 +5,15 @@
 #ifndef ADVENTUREGAME_BEAST_H
 #define ADVENTUREGAME_BEAST_H
 
-#include "../Headers/Character.h"
+#include "Character.h"
 
 class Beast : public Character {
 
 public:
     Beast();
-    Beast(std::string str);
+    Beast(std::string str, std::string);
     ~Beast();
-    void weakness(Character& src);
+    float weakness(Character& src);
     std::vector<std::string> weapons();
 };
 

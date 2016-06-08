@@ -6,11 +6,12 @@
 #include <regex>
 #include <sstream>
 
-#define RESET   "\033[0m"
-#define BOLDRED "\033[1m\033[31m"      /* Bold Red */
-#define MAGENTA "\033[35m"      /* Magenta */
-#define BOLDYELLOW  "\033[1m\033[33m"      /* Bold Yellow */
-#define BOLDGREEN   "\033[1m\033[32m"      /* Bold Green */
+#define RESET   ""
+#define BOLDRED ""      /* Bold Red */
+#define MAGENTA ""      /* Magenta */
+#define BOLDYELLOW  ""      /* Bold Yellow */
+#define BOLDGREEN   ""      /* Bold Green */
+#include "Useable.h"
 using std::cout;
 
 /* Helper functions */
@@ -41,9 +42,9 @@ void writeError(std::string msg, std::string format) {
 
 GameEngine::GameEngine(Setting *setting, Character *player, std::vector<Item*> items) {
 	_items = items;
-	//_currentSetting = setting;
+	_currentSetting = setting;
 	_player = player;
-	_player->_location = setting;
+	_player->setLocation(*setting);
 	_isRunning = true;
 	_availableCommands = {
 		"go", 
@@ -122,12 +123,12 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			cout << _descriptions["go"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
-				if(_player->_location->hasRoute(keyword)) {
-					auto it = _player->_location->move(_player, keyword);
+				if(_currentSetting->hasRoute(keyword)) {
+					auto it = _currentSetting->move(_player, keyword);
 					if(it != NULL) {
-						_player->_location = it;
+						_currentSetting = it;
 					}
-					cout << BOLDYELLOW << "New location \n" << RESET << _player->_location->_description << "\n";
+					cout << BOLDYELLOW << "New location \n" << RESET << _currentSetting->_description << "\n";
 				} else {
 					cout << "There's no route in that direction!\n";
 				}
@@ -146,9 +147,9 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			cout << _descriptions["pick"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
-				if(_player->_location->hasItem(keyword)) {
+				if(_currentSetting->hasItem(keyword)) {
 					_player->addItem(getItemByName(keyword));
-					_player->_location->removeItem(getItemByName(keyword));
+					_currentSetting->removeItem(getItemByName(keyword));
 					cout << BOLDGREEN << "Picked up " << getItemByName(keyword)->_name << "\n";
 				} else {
 					cout << "That item is not to be found here!\n";
@@ -164,9 +165,9 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			if(checkSize(userInput, 1)) {
 				if(_player->hasItem("map")) {
 					cout << BOLDYELLOW << "Current position \n" << RESET;
-					cout << _player->_location->_description << "\n";
+					cout << _currentSetting->_description << "\n";
 					cout << BOLDYELLOW << "Available directions \n" << RESET;
-					for(auto elem : _player->_location->getRoutes()) {
+					for(auto elem : _currentSetting->getRoutes()) {
 						cout << elem << "\n";
 					}
 				} else {
@@ -181,7 +182,16 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			cout << _descriptions["attack"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
-				// Gör nåt med valt vapen
+				if(_player->_location->hasCharacter(keyword)) {
+					if(_player->fight(*_player->_location->getCharacterByName(keyword))) {
+						_player->_location->removeCharacter(_player->_location->getCharacterByName(keyword));
+					} else {
+						std::cout << "Game over..." << std::endl;
+						_isRunning = false;
+					}
+				} else {
+					writeError("Character does not exists in this zone (" + _player->_location->_name + ").", BOLDRED);
+				}
 			} else {
 				writeError("Invalid format.", BOLDRED);
 			}
@@ -204,7 +214,7 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 				if(_player->hasItem(keyword)) {
 					_player->removeItem(getItemByName(keyword));
 					int random = rand() % 4 + 1;
-					_player->_location->addItem(getItemByName(keyword), random);
+					_currentSetting->addItem(getItemByName(keyword), random);
 					cout << "You have dropped your " << keyword << "\n";
 				} else {
 					cout << "You can't drop something you don't have...\n";
@@ -234,7 +244,7 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			}
 		} 
 	} else if (command == "use") {
-		if(hasOption) { 
+		if(hasOption) {
 			cout << _descriptions["use"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
@@ -243,13 +253,13 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 						_player->useItem(ptr);
 					}
 				} else {
-					cout << "You don't have that item in your backpack!\n"; 
+					cout << "You don't have that item in your backpack!\n";
 				}
 
 			} else {
 				writeError("Invalid format.", BOLDRED);
 			}
-		} 
+		}
 	} else if (command == "backpack") {
 		if(hasOption) { 
 			cout << _descriptions["backpack"] << "\n";
@@ -269,11 +279,11 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 		} else {
 			if(checkSize(userInput, 2)) {
 				// TODO: Check for characters too
-				if(_player->_location->hasCharacter(_lookup[keyword])) {
-					cout << _player->_location->getCharacterByPosition(_lookup[keyword])->_attackPhrase << "\n";
+				if(_currentSetting->hasCharacter(_lookup[keyword])) {
+					cout << _currentSetting->getCharacterByPosition(_lookup[keyword])->_attackPhrase << "\n";
 				}
-				if(_player->_location->hasItem(_lookup[keyword])) {
-					cout << "You found " << _player->_location->getItemByPosition(_lookup[keyword])->_description << "\n";
+				if(_currentSetting->hasItem(_lookup[keyword])) {
+					cout << "You found " << _currentSetting->getItemByPosition(_lookup[keyword])->_description << "\n";
 				} else {
 					cout << "There is nothing to be found here.\n";
 				}

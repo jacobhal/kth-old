@@ -3,9 +3,12 @@
 
 using std::cout;
 
-Mage::Mage() : Character("mage") {
+Mage::Mage() : Character("Mage") {
+	int power = 20;
+	_stats = {100, 70, 50, power};
+	_maxWeight = power*3;
 }
-Mage::Mage(std::string str) : Character("mage") {
+Mage::Mage(std::string str, std::string name) : Character("Mage", name) {
 	_attackPhrase = str;
 	int power = 20;
 	_stats = {100, 70, 50, power};
@@ -13,12 +16,13 @@ Mage::Mage(std::string str) : Character("mage") {
 }
 Mage::~Mage() {
 }
-void Mage::weakness(Character& src) {
-	if(src.getClass() == "paladin") {
-		_stats.strength = 10;
+float Mage::weakness(Character& src) {
+	float modifier = 1;
+	if(src.getClass() == "mage") {
+		modifier = 0.3;
 	}
-	//_stats.hp = 70;
-}
+
+	return modifier;}
 std::vector<std::string> Mage::weapons() {
 	return {"Staff", "One-handed dagger and off-hand", "One-handed sword and off-hand"};
 }

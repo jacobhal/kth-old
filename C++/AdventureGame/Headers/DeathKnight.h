@@ -11,9 +11,9 @@ class DeathKnight : public Character {
 
 public:
     DeathKnight();
-    DeathKnight(std::string str);
+    DeathKnight(std::string str, std::string);
     ~DeathKnight();
-    void weakness(Character& src);
+    float weakness(Character& src);
     std::vector<std::string> weapons();
 };
 
