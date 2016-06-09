@@ -9,7 +9,7 @@ Priest::Priest() : Character("Priest") {
 	_maxWeight = power*3;
 }
 Priest::Priest(std::string str, std::string name) : Character("Priest", name) {
-	_attackPhrase = str;
+	_attackPhrase = name + ": " + str;
 	int power = 30;
 	_stats = {100, 50, 50, power};
 	_maxWeight = power*3;

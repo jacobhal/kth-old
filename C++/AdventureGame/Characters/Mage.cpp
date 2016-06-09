@@ -9,7 +9,7 @@ Mage::Mage() : Character("Mage") {
 	_maxWeight = power*3;
 }
 Mage::Mage(std::string str, std::string name) : Character("Mage", name) {
-	_attackPhrase = str;
+	_attackPhrase = name + ": " + str;
 	int power = 20;
 	_stats = {100, 70, 50, power};
 	_maxWeight = power*3;
