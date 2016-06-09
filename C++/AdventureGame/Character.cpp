@@ -69,9 +69,20 @@ void Character::openItem(Container *item) {
 }
 
 void Character::equipItem(Equipment *item) {
+    if(_weapon != nullptr) {
+        // Remove stat modifiers and place current weapon in backpack
+        _stats.hp -= _weapon->_hpMod;
+        _stats.strength -= _weapon->_strMod;
+        this->addItem(_weapon);
+    }
+
+    // Add new weapon to weapon slot
     _weapon          = item;
     _stats.hp       += item->_hpMod;
     _stats.strength += item->_strMod;
+    this->removeItem(item);
+
+    std::cout << "Equipped " + _weapon->_name << "." << std::endl;
 
 }
 

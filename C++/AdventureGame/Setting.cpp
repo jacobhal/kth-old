@@ -50,7 +50,8 @@ bool Setting::hasItem(int position) {
     }
     return false;
 }
-Item* Setting::getItemByPosition(int position) {
+std::vector<Item*> Setting::getItemByPosition(int position) {
+    std::vector<Item*> iv;
     auto it = std::find_if(_items.begin(), _items.end(), [&position] (const Item* p) -> bool { return p->_settingPosition == position; });
 
     if(it != _items.end()) {

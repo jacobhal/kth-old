@@ -26,7 +26,7 @@ public:
 	// Item methods
 	bool hasItem(std::string name);
 	bool hasItem(int position);
-	Item* getItemByPosition(int position);
+	std::vector<Item*> getItemByPosition(int position);
 	Item* getItemByName(std::string name);
 	void addItem(Item *item, int position);
 	void removeItem(Item *item);

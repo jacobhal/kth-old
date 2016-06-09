@@ -60,6 +60,7 @@ GameEngine::GameEngine(Setting *setting, Character *player, std::vector<Item*> i
 		"examine",
 		"open",
 		"use",
+		"equip",
 		"backpack",
 		"look",
 		"quit"
@@ -75,6 +76,7 @@ GameEngine::GameEngine(Setting *setting, Character *player, std::vector<Item*> i
 	_descriptions["examine"] = "'examine' examines an item to reveal its purpose.";
 	_descriptions["open"] = "'open' opens a container in your backpack.";
 	_descriptions["use"] = "'use' uses an item in your backpack. Example: use key (if you are in a zone with a locked door)";
+	_descriptions["equip"] = "'equip' equips an item in your backpack.";
 	_descriptions["backpack"] = "'backpack' checks the content of your backpack. That is if you are clever enough to keep it.";
 	_descriptions["look"] = "'look' lets you check your surroundings to see if any items or NPCs are to be found. Possible directions are: north, south, east and west. Example: look west";
 	_descriptions["quit"] = "'quit' ends the game.";
@@ -195,12 +197,10 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 								std::cout << "You have beat the game, good job!\n";
 								_isRunning = false;
 							}
-							/*
 							if(keyword == "LichKing") {
 								std::cout << "It appears the door to Onyxia's lair has opened!\n";
 								_player->_location->unlockRoute(2);
 							}
-							 */
 							break;
 						case -1:
 							std::cout << "Game over..." << std::endl;
@@ -224,15 +224,12 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 		} else {
 			if(checkSize(userInput, 2)) {
 				// TODO: Perform wave action for given character getCharacterByName fuckar
-				if(_player->_location->getCharacterByName("Tyrael") != nullptr) {
-					if (_player->_settingPosition ==
-						_player->_location->getCharacterByName("Tyrael")->_settingPosition) {
-						if (_player->_location->_name == "Ruins" &&
-							_player->_location->getCharacterByName("Tyrael")->hasItem("key")) {
-							_player->_location->getCharacterByName("Tyrael")->removeItem(getItemByName("key"));
-							_player->addItem(getItemByName("key"));
-							cout << "Here's a key that will be necessary in order to continue your adventure!\n";
-						}
+				if(_player->_settingPosition == _player->_location->getCharacterByName("Tyrael")->_settingPosition) {
+					if (_player->_location->_name == "Ruins" &&
+						_player->_location->getCharacterByName("Tyrael")->hasItem("key")) {
+						_player->_location->getCharacterByName("Tyrael")->removeItem(getItemByName("key"));
+						_player->addItem(getItemByName("key"));
+						cout << "Here's a key that will be necessary in order to continue your adventure!\n";
 					}
 				}
 			} else {
@@ -297,6 +294,20 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 				writeError("Invalid format.", BOLDRED);
 			}
 		}
+	} else if (command == "equip") {
+		if(hasOption) {
+			cout << _descriptions["equip"] << "\n";
+		} else {
+			if(checkSize(userInput, 2)) {
+				if(_player->hasItem(keyword) && getItemByName(keyword)->_isEquippable) {
+					_player->equipItem(dynamic_cast<Equipment*>(getItemByName(keyword)));
+				} else {
+					writeError("You can't equip that item.", BOLDRED);
+				}
+			} else {
+				writeError("Invalid format", BOLDRED);
+			}
+		}
 	} else if (command == "backpack") {
 		if(hasOption) { 
 			cout << _descriptions["backpack"] << "\n";
@@ -324,7 +335,7 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 				}
 				if(_player->_location->hasItem(_lookup[keyword])) {
 					found = true;
-					cout << "You found " << _player->_location->getItemByPosition(_lookup[keyword])->_description << "\n";
+					cout << "You found " << "[" <<_player->_location->getItemByPosition(_lookup[keyword])->_name << "]: " << _player->_location->getItemByPosition(_lookup[keyword])->_description << "\n";
 				}
 				if(_player->_location->_isLocked[_player->_settingPosition-1]) {
 					found = true;
