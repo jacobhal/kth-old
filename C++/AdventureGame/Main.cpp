@@ -143,7 +143,7 @@ Character *benedictus = new Priest("Greetings traveler, I hear that if you're lo
 
 // Bosses
 Character *basilisk = new Boss("Basilisk", "HISSSSSS (A basilisk stands in your way. Defend yourself!)", "*SQUEAL*");
-Character *lichKing = new Boss("LichKing", "Lich King, a mighty foe stands in your way. Choose what to do, and quick!", "Ice... Cold...");
+Character *lichKing = new Boss("LichKing", "I'll rek ya m8", "Ice... Cold...");
 Character *onyxia = new Boss("Onyxia", "Foolish mortals! Perish in fire!", "Bwleeuuughhh!");
 Character *shrek = new Boss("Shrek", "GET OUT OF MY SWAMMPPPP!", "It's all ogre now...");
 
@@ -164,6 +164,9 @@ items.push_back(scroll);
 items.push_back(map);
 items.push_back(potion);
 items.push_back(sword);
+for(int i = 0; i < player->weapons().size(); ++i) {
+    items.push_back(&player->weapons()[i]);
+}
 
 // Add items to characters
 basilisk->addItem(potion);

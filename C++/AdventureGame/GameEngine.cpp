@@ -116,6 +116,7 @@ void GameEngine::run(){
 void GameEngine::userCommand(std::string command, bool hasOption = 0){
 
 	// Split the user command by space
+	std::string longKeyword = command.substr(command.find_first_of(" \t")+1);
 	std::vector<std::string> userInput = split(command, ' ');
 	command = userInput[0];
 	std::string keyword = "";
@@ -254,7 +255,7 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 		if(hasOption) { 
 			cout << _descriptions["examine"] << "\n";
 		} else {
-			if(checkSize(userInput, 2)) {
+			if(checkSize(userInput, 2) && _player->hasItem(keyword)) {
 				std::cout << getItemByName(keyword)->_description << std::endl;
 			} else {
 				writeError("Invalid format.", BOLDRED);
@@ -294,14 +295,16 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 		if(hasOption) {
 			cout << _descriptions["equip"] << "\n";
 		} else {
-			if(checkSize(userInput, 2)) {
-				if(_player->hasItem(keyword) && getItemByName(keyword)->_isEquippable) {
-					_player->equipItem(dynamic_cast<Equipment*>(getItemByName(keyword)));
-				} else {
-					writeError("You can't equip that item.", BOLDRED);
-				}
+			std::cout << longKeyword << std::endl;
+			std::cout << "Items:" << std::endl;
+			for(int i = 0; i < _items.size(); ++i) {
+				std::cout << _items[i]->_name << ": " <<  _items[i] << std::endl;
+			}
+			std::cout << getItemByName("Two-handed broadsword") << std::endl;
+			if (_player->hasItem(longKeyword) && getItemByName(longKeyword)->_isEquippable) {
+				_player->equipItem(dynamic_cast<Equipment *>(getItemByName(longKeyword)));
 			} else {
-				writeError("Invalid format", BOLDRED);
+				writeError("You can't equip that item.", BOLDRED);
 			}
 		}
 	} else if (command == "backpack") {
@@ -329,10 +332,12 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 					found = true;
 					cout << _player->_location->getCharacterByPosition(_lookup[keyword])->_attackPhrase << "\n";
 					if(_player->_location->getCharacterByPosition(_lookup[keyword])->_stateChanged &&
-							_player->_location->getCharacterByPosition(_lookup[keyword])->_name == "Jaina") {
+					   _player->_location->getCharacterByPosition(_lookup[keyword])->_name == "Jaina") {
 						_player->_location->getCharacterByPosition(_lookup[keyword])->dropItems();
+						_player->_location->getCharacterByPosition(_lookup[keyword])->_attackPhrase = "Goodbye hero!\n";
 					}
 				}
+
 				if(_player->_location->hasItem(_lookup[keyword])) {
 					found = true;
 					for(Item* i : _player->_location->getItemByPosition(_lookup[keyword])) {
