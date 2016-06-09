@@ -82,7 +82,7 @@ public:
 
 	virtual float weakness(Character& src) =0; // Define the certain threats to a given class
 protected:
-	Character(std::string s, std::string s2 = "noname", std::string s3 = "*shrug*") : _class(s), _name(s2), _voiceLine(s3), _attackPhrase(s3) {};
+	Character(std::string s, std::string s2 = "noname", std::string s3 = "*shrug*") : _class(s), _name(s2), _voiceLine(s3), _attackPhrase(s2 + ": " + s3) {};
 private:
     const std::string _class;
 
