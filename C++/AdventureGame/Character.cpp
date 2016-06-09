@@ -72,7 +72,7 @@ void Character::equipItem(Equipment *item) {
     if(_weapon != nullptr) {
         // Remove stat modifiers and place current weapon in backpack
         _stats.hp -= _weapon->_hpMod;
-        _stats.maxhp -= _weapon->_hpMod;
+        _stats.maxhp    -= _weapon->_hpMod;
         _stats.strength -= _weapon->_strMod;
         this->addItem(_weapon);
     }
@@ -112,12 +112,20 @@ std::string Character::talkTo(Character & ch) const{
     return ch._voiceLine;
 }
 
-std::string Character::attack(Character & ch) {
+void Character::damageChar(int dmg) {
+    getStats().hp - dmg < 0 ? _stats.hp = 0 : _stats.hp -= dmg;
+}
+
+void Character::healChar(int hp) {
+    getStats().hp + hp > 100 ? _stats.hp = 100 : _stats.hp += hp;
+}
+
+// Default attack (this will be different for each playable class and also provide options
+void Character::attack(Character & ch) {
     float modifier = weakness(ch);
     int damage = 0.5*(getStats().strength * modifier) * (rand() % 2 + 1);
     ch.getStats().hp - damage < 0 ? ch._stats.hp = 0 : ch._stats.hp -= damage;
-    std::string txt = this->_name + " did " + std::to_string(damage) + " damage to " + ch._name + " who is now at " + std::to_string(ch.getStats().hp) + ".";
-    return txt;
+    std::cout << this->_name + " did " + std::to_string(damage) + " damage to " + ch._name + " who is now at " + std::to_string(ch.getStats().hp) + "." << std::endl;
 }
 
 int Character::fight(Character & ch) {
@@ -136,18 +144,18 @@ int Character::fight(Character & ch) {
         std::cin >> c;
         switch(c) {
             case 1:
-                std::cout << attack(ch) << std::endl;
+                attack(ch);
                 if (ch.getStats().hp <= 0) {
                     ch.death();
                     _location->removeCharacter(&ch);
                     std::cout << "You defeated " << ch._name << "." << std::endl;
                     if(ch._name == "Shrek") {
-                        ch._location->getCharacterByName("Jaina")->_attackPhrase = "Well done, hero. Your reward is a scroll which can increase your powers.";
+                        ch._location->getCharacterByName("Jaina")->_attackPhrase = "Jaina: Well done, hero. Your reward is a scroll which can increase your powers.";
                         ch._location->getCharacterByName("Jaina")->_stateChanged = 1;
                     }
                     return 1;
                 } else {
-                    std::cout << ch.attack(*this) << std::endl;
+                    ch.attack(*this);
                     if (getStats().hp <= 0) {
                         std::cout << "You died." << std::endl;
                         return -1;

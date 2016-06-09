@@ -15,6 +15,7 @@ public:
     ~Paladin();
     float weakness(Character& src);
     std::vector<Equipment> weapons();
+    void attack(Character & ch);
 };
 
 #endif //ADVENTUREGAME_PALADIN_H

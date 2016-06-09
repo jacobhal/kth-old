@@ -13,7 +13,8 @@ Scroll::~Scroll() {
 }
 std::string Scroll::use(Character* c) {
 	c->_stats.hp += 20;
+	c->_stats.maxhp += 20;
 	c->_stats.strength += 20;
 	c->removeItem(this);
-	return "";
+	return "All stats increased by 20.";
 }

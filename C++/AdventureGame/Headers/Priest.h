@@ -15,6 +15,8 @@ public:
     ~Priest();
     float weakness(Character& src);
     std::vector<Equipment> weapons();
+    void attack(Character & ch);
+
 };
 
 #endif //ADVENTUREGAME_PRIEST_H

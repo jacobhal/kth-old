@@ -59,6 +59,7 @@ GameEngine::GameEngine(Setting *setting, Character *player, std::vector<Item*> i
 		"drop",
 		"examine",
 		"open",
+		"stats",
 		"use",
 		"equip",
 		"backpack",
@@ -80,6 +81,7 @@ GameEngine::GameEngine(Setting *setting, Character *player, std::vector<Item*> i
 	_descriptions["backpack"] = "'backpack' checks the content of your backpack. That is if you are clever enough to keep it.";
 	_descriptions["look"] = "'look' lets you check your surroundings to see if any items or NPCs are to be found. Possible directions are: north, south, east and west. Example: look west";
 	_descriptions["quit"] = "'quit' ends the game.";
+	_descriptions["stats"] = "'stats' shows you your current stats.";
 	
 	_lookup["north"] = 1;
 	_lookup["west"] = 2;
@@ -129,17 +131,21 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			cout << _descriptions["go"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
-				_player->_settingPosition = _lookup[keyword];
-				if(_player->_location->hasRoute(keyword) && !_player->_location->_isLocked[_lookup[keyword]-1]) {
-					auto it = _player->_location->move(_player, keyword);
-					if(it != NULL) {
-						_player->_location = it;
+				if(keyword == "north" || keyword == "south" || keyword == "west" || keyword == "east") {
+					_player->_settingPosition = _lookup[keyword];
+					if (_player->_location->hasRoute(keyword) && !_player->_location->_isLocked[_lookup[keyword] - 1]) {
+						auto it = _player->_location->move(_player, keyword);
+						if (it != NULL) {
+							_player->_location = it;
+						}
+						cout << BOLDYELLOW << "New location \n" << RESET << _player->_location->_description << "\n";
+					} else if (_player->_location->_isLocked[_lookup[keyword] - 1]) {
+						cout << "There is a locked door blocking your way\n";
+					} else {
+						cout << "There's no route in that direction!\n";
 					}
-					cout << BOLDYELLOW << "New location \n" << RESET << _player->_location->_description << "\n";
-				} else if(_player->_location->_isLocked[_lookup[keyword]-1]) {
-					cout << "There is a locked door blocking your way\n";
 				} else {
-					cout << "There's no route in that direction!\n";
+					writeError("Invalid input.", BOLDRED);
 				}
 			} else {
 				writeError("Invalid format.", BOLDRED);
@@ -167,13 +173,29 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 				writeError("Invalid format.", BOLDRED);
 			}
 		} 
+	} else if(command == "stats") {
+		if(hasOption) {
+			cout << _descriptions["stats"] << "\n";
+		} else {
+			if(checkSize(userInput, 1)) {
+				std::cout << _player->getStats().hp << "/" << _player->getStats().maxhp << " hp" << std::endl;
+				std::cout << _player->getStats().strength << " strength" << std::endl;
+			} else {
+				writeError("Invalid format", BOLDRED);
+			}
+		}
 	} else if (command == "map") {
 		if(hasOption) { 
 			cout << _descriptions["map"] << "\n";
 		} else {
 			if(checkSize(userInput, 1)) {
 				if(_player->hasItem("map")) {
-					getItemByName("map")->use(_player);
+					cout << BOLDYELLOW << "Current position \n" << RESET;
+					cout << _player->_location->_description << "\n";
+					cout << BOLDYELLOW << "Available directions \n" << RESET;
+					for(auto elem : _player->_location->getRoutes()) {
+						cout << elem << "\n";
+					}
 				} else {
 					cout << "You don't possess a map:(\n";
 				}
@@ -216,12 +238,13 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 		} else {
 			if(checkSize(userInput, 2)) {
 				// TODO: Perform wave action for given character getCharacterByName fuckar
-				if(_player->_settingPosition == _player->_location->getCharacterByName("Tyrael")->_settingPosition) {
-					if (_player->_location->_name == "Ruins" &&
-						_player->_location->getCharacterByName("Tyrael")->hasItem("key")) {
-						_player->_location->getCharacterByName("Tyrael")->removeItem(getItemByName("key"));
-						_player->addItem(getItemByName("key"));
-						cout << "Here's a key that will be necessary in order to continue your adventure!\n";
+				if(_player->_location->_name == "Ruins" ) {
+					if(_player->_settingPosition == _player->_location->getCharacterByName("Tyrael")->_settingPosition) {
+						if (_player->_location->getCharacterByName("Tyrael")->hasItem("key")) {
+							_player->_location->getCharacterByName("Tyrael")->removeItem(getItemByName("key"));
+							_player->addItem(getItemByName("key"));
+							cout << "Here's a key that will be necessary in order to continue your adventure!\n";
+						}
 					}
 				}
 			} else {
@@ -290,12 +313,6 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 		if(hasOption) {
 			cout << _descriptions["equip"] << "\n";
 		} else {
-			std::cout << longKeyword << std::endl;
-			std::cout << "Items:" << std::endl;
-			for(int i = 0; i < _items.size(); ++i) {
-				std::cout << _items[i]->_name << ": " <<  _items[i] << std::endl;
-			}
-			std::cout << getItemByName("Two-handed broadsword") << std::endl;
 			if (_player->hasItem(longKeyword) && getItemByName(longKeyword)->_isEquippable) {
 				_player->equipItem(dynamic_cast<Equipment *>(getItemByName(longKeyword)));
 			} else {
@@ -320,34 +337,38 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 			cout << _descriptions["look"] << "\n";
 		} else {
 			if(checkSize(userInput, 2)) {
-				_player->_settingPosition = _lookup[keyword];
-				bool found = false;
-				// TODO: Check for characters too
-				if(_player->_location->hasCharacter(_lookup[keyword])) {
-					found = true;
-					cout << _player->_location->getCharacterByPosition(_lookup[keyword])->_attackPhrase << "\n";
-					if(_player->_location->getCharacterByPosition(_lookup[keyword])->_stateChanged &&
-					   _player->_location->getCharacterByPosition(_lookup[keyword])->_name == "Jaina") {
-						_player->_location->getCharacterByPosition(_lookup[keyword])->dropItems();
-						_player->_location->getCharacterByPosition(_lookup[keyword])->_attackPhrase = "Goodbye hero!\n";
+				if(keyword == "north" || keyword == "south" || keyword == "west" || keyword == "east") {
+					_player->_settingPosition = _lookup[keyword];
+					bool found = false;
+					// TODO: Check for characters too
+					if (_player->_location->hasCharacter(_lookup[keyword])) {
+						found = true;
+						cout << _player->_location->getCharacterByPosition(_lookup[keyword])->_attackPhrase << "\n";
+						if (_player->_location->getCharacterByPosition(_lookup[keyword])->_stateChanged &&
+							_player->_location->getCharacterByPosition(_lookup[keyword])->_name == "Jaina") {
+							_player->_location->getCharacterByPosition(_lookup[keyword])->dropItems();
+							_player->_location->getCharacterByPosition(
+									_lookup[keyword])->_attackPhrase = "Jaina: Goodbye hero!\n";
+						}
 					}
-				}
 
-				if(_player->_location->hasItem(_lookup[keyword])) {
-					found = true;
-					for(Item* i : _player->_location->getItemByPosition(_lookup[keyword])) {
-						cout << "You found " << "[" << i->_name << "]: " << i->_description << "\n";
+					if (_player->_location->hasItem(_lookup[keyword])) {
+						found = true;
+						for (Item *i : _player->_location->getItemByPosition(_lookup[keyword])) {
+							cout << "You found " << "[" << i->_name << "]: " << i->_description << "\n";
+						}
 					}
-				}
-				if(_player->_location->_isLocked[_player->_settingPosition-1]) {
-					found = true;
-					cout << "A door blocks the passage." << std::endl;
-				}
+					if (_player->_location->_isLocked[_player->_settingPosition - 1]) {
+						found = true;
+						cout << "A door blocks the passage." << std::endl;
+					}
 
-				if(!found) {
-					cout << "There is nothing to be found here." << std::endl;
+					if (!found) {
+						cout << "There is nothing to be found here." << std::endl;
+					}
+				} else {
+					writeError("Valid inputs are: north, west, south, east", BOLDRED);
 				}
-
 			} else {
 				writeError("Invalid format.", BOLDRED);
 			}

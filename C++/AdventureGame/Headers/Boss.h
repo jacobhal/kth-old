@@ -23,7 +23,7 @@ public:
         return _voiceLineDeath;
     }
 
-    std::string attack(Character & ch);
+    void attack(Character & ch);
 
 
 };

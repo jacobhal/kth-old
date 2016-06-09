@@ -30,3 +30,35 @@ std::vector<Equipment> Paladin::weapons() {
 	return {twohmace, swordshield};
 }
 
+void Paladin::attack(Character & ch) {
+	using namespace std;
+
+	cout << "Attacks available: (1)Melee attack, (2)Crusader Strike, (3)Holy Strike" << endl;
+	int action;
+	cin >> action;
+
+	float modifier = weakness(ch);
+	int damage;
+	switch(action) {
+		case 1:
+			damage = 0.5*(getStats().strength * modifier) * (rand() % 2 + 1);
+			ch.damageChar(damage);
+			cout << this->_name << "'s melee attack did " << damage << " damage to " << ch._name << " who is now at " << ch.getStats().hp << "." << endl;
+			break;
+		case 2:
+			damage = 0.5*((getStats().strength + (getStats().hp*0.3)) * modifier) * (rand() % 2 + 1);
+			ch.damageChar(damage);
+			cout << this->_name << "'s Crusader Strike did " << damage << " damage to " << ch._name << " who is now at " << ch.getStats().hp << "." << endl;
+			break;
+		case 3:
+			damage = 0.3*((getStats().strength * modifier) * (rand() % 2 + 1));
+			ch.damageChar(damage);
+			healChar(damage*0.5);
+			cout << this->_name << "'s Holy Strike healed for " << damage*0.5 << " and did " << damage << " damage to " << ch._name << " who is now at " << ch.getStats().hp << "." << endl;
+			break;
+		default:
+			cout << "Invalid input" << endl;
+	}
+
+}
+

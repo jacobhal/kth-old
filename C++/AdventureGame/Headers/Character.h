@@ -76,7 +76,9 @@ public:
 
 	// Character methods
 	std::string talkTo(Character & ch) const;
-	virtual std::string attack(Character & ch);
+	void damageChar(int dmg);
+	void healChar(int hp);
+	virtual void attack(Character & ch);
 	int fight(Character & ch);
 	virtual void death(){};
 
