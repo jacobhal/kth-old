@@ -6,6 +6,7 @@
 Boss::Boss(std::string name, std::string vl, std::string vld) : Character("Boss", name, vl){
     _voiceLineDeath = vld;
     _stats.hp = 200;
+    _stats.maxhp = 200;
     _stats.strength = 30;
 }
 

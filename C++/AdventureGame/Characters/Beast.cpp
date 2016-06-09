@@ -11,7 +11,7 @@ Beast::Beast() : Character("Beast") {
 Beast::Beast(std::string str, std::string name) : Character("Beast", name) {
 	_attackPhrase = name + ": " + str;
 	int power = 40;
-	_stats = {100, 70, 50, power};
+	_stats = {100, 100, 70, 50, power};
 	_maxWeight = power*3;
 }
 Beast::~Beast() {

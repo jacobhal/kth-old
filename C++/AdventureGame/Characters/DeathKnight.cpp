@@ -11,7 +11,7 @@ DeathKnight::DeathKnight() : Character("Deathknight") {
 DeathKnight::DeathKnight(std::string str, std::string name) : Character("Deathknight", name) {
 	_attackPhrase = name + ": " + str;
 	int power = 50;
-	_stats = {100, 70, 50, power};
+	_stats = {100, 100, 70, 50, power};
 	_maxWeight = power*3;
 }
 DeathKnight::~DeathKnight() {

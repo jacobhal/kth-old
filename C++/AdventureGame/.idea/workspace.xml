@@ -55,103 +55,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Character.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Character.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Item.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Headers/Item.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Equipment.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Headers/Equipment.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameEngine.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GameEngine.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2475">
-              <caret line="174" column="45" selection-start-line="174" selection-start-column="45" selection-end-line="174" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Chest.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Headers/Chest.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Container.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Headers/Container.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Useable.h" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Headers/Useable.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-              <folding>
-                <element signature="e#113#130#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Chest.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Items/Chest.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Equipment.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Items/Equipment.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Key.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Items/Key.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
               <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Potion.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Items/Potion.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="19" column="94" selection-start-line="19" selection-start-column="94" selection-end-line="19" selection-end-column="94" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Character.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Headers/Character.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-537">
+              <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Character.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Character.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="585">
+              <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Beast.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Characters/Beast.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Boss.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Characters/Boss.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeathKnight.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Characters/DeathKnight.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mage.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Characters/Mage.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Paladin.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Characters/Paladin.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Priest.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Characters/Priest.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -179,7 +177,6 @@
         <option value="$PROJECT_DIR$/Headers/Map.h" />
         <option value="$PROJECT_DIR$/Headers/Scroll.h" />
         <option value="$PROJECT_DIR$/Headers/GameEngine.h" />
-        <option value="$PROJECT_DIR$/Items/Potion.cpp" />
         <option value="$PROJECT_DIR$/Headers/Onyxia.h" />
         <option value="$PROJECT_DIR$/Headers/Boss.h" />
         <option value="$PROJECT_DIR$/Settings/Gurubashi.cpp" />
@@ -190,25 +187,27 @@
         <option value="$PROJECT_DIR$/Settings/Orgrimmar.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/Items/Key.cpp" />
-        <option value="$PROJECT_DIR$/Characters/Beast.cpp" />
-        <option value="$PROJECT_DIR$/Characters/Paladin.cpp" />
-        <option value="$PROJECT_DIR$/Characters/DeathKnight.cpp" />
-        <option value="$PROJECT_DIR$/Characters/Mage.cpp" />
-        <option value="$PROJECT_DIR$/Characters/Priest.cpp" />
         <option value="$PROJECT_DIR$/Main.cpp" />
         <option value="$PROJECT_DIR$/Setting.cpp" />
         <option value="$PROJECT_DIR$/Items/Scroll.cpp" />
         <option value="$PROJECT_DIR$/Items/Map.cpp" />
-        <option value="$PROJECT_DIR$/Headers/Character.h" />
         <option value="$PROJECT_DIR$/Headers/Setting.h" />
         <option value="$PROJECT_DIR$/Items/Chest.cpp" />
-        <option value="$PROJECT_DIR$/Character.cpp" />
         <option value="$PROJECT_DIR$/Headers/Item.h" />
         <option value="$PROJECT_DIR$/Headers/Chest.h" />
         <option value="$PROJECT_DIR$/Headers/Equipment.h" />
         <option value="$PROJECT_DIR$/GameEngine.cpp" />
         <option value="$PROJECT_DIR$/Headers/Useable.h" />
         <option value="$PROJECT_DIR$/Headers/Container.h" />
+        <option value="$PROJECT_DIR$/Characters/Boss.cpp" />
+        <option value="$PROJECT_DIR$/Headers/Character.h" />
+        <option value="$PROJECT_DIR$/Characters/Beast.cpp" />
+        <option value="$PROJECT_DIR$/Characters/DeathKnight.cpp" />
+        <option value="$PROJECT_DIR$/Characters/Mage.cpp" />
+        <option value="$PROJECT_DIR$/Characters/Paladin.cpp" />
+        <option value="$PROJECT_DIR$/Characters/Priest.cpp" />
+        <option value="$PROJECT_DIR$/Character.cpp" />
+        <option value="$PROJECT_DIR$/Items/Potion.cpp" />
       </list>
     </option>
   </component>
@@ -543,14 +542,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32711443" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32711443" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32711443" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26037195" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -785,14 +784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Items/Potion.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Headers/Paladin.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -801,58 +792,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Characters/Paladin.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Characters/DeathKnight.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Characters/Priest.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Headers/Beast.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Characters/Beast.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Characters/Mage.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Characters/Boss.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="90" selection-start-line="5" selection-start-column="90" selection-end-line="5" selection-end-column="90" />
           <folding />
         </state>
       </provider>
@@ -889,16 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/Character.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-          <folding>
-            <element signature="e#42#59#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Setting.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
@@ -927,14 +860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Items/Key.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -971,14 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Character.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Headers/Item.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -994,6 +911,86 @@
           <folding>
             <element signature="e#113#130#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Items/Key.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Characters/Beast.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Characters/Boss.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Characters/DeathKnight.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Characters/Mage.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Characters/Paladin.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Characters/Priest.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/Character.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-537">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Items/Potion.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="94" selection-start-line="19" selection-start-column="94" selection-end-line="19" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Character.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>

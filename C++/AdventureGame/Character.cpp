@@ -72,6 +72,7 @@ void Character::equipItem(Equipment *item) {
     if(_weapon != nullptr) {
         // Remove stat modifiers and place current weapon in backpack
         _stats.hp -= _weapon->_hpMod;
+        _stats.maxhp -= _weapon->_hpMod;
         _stats.strength -= _weapon->_strMod;
         this->addItem(_weapon);
     }
@@ -79,6 +80,7 @@ void Character::equipItem(Equipment *item) {
     // Add new weapon to weapon slot
     _weapon          = item;
     _stats.hp       += item->_hpMod;
+    _stats.maxhp    += _weapon->_hpMod;
     _stats.strength += item->_strMod;
     this->removeItem(item);
 

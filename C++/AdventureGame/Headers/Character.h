@@ -16,6 +16,7 @@ class Container;
 class Equipment;
 
 struct Stats {
+	int maxhp;
 	int hp;
 	int weight;
 	int height;
