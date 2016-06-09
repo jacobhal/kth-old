@@ -335,7 +335,9 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 				}
 				if(_player->_location->hasItem(_lookup[keyword])) {
 					found = true;
-					cout << "You found " << "[" <<_player->_location->getItemByPosition(_lookup[keyword])->_name << "]: " << _player->_location->getItemByPosition(_lookup[keyword])->_description << "\n";
+					for(Item* i : _player->_location->getItemByPosition(_lookup[keyword])) {
+						cout << "You found " << "[" << i->_name << "]: " << i->_description << "\n";
+					}
 				}
 				if(_player->_location->_isLocked[_player->_settingPosition-1]) {
 					found = true;

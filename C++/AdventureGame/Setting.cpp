@@ -52,13 +52,13 @@ bool Setting::hasItem(int position) {
 }
 std::vector<Item*> Setting::getItemByPosition(int position) {
     std::vector<Item*> iv;
-    auto it = std::find_if(_items.begin(), _items.end(), [&position] (const Item* p) -> bool { return p->_settingPosition == position; });
-
-    if(it != _items.end()) {
-        return *it;
-    } else {
-        return nullptr;
+    for(Item* i : _items) {
+        if(i->_settingPosition == position) {
+            iv.push_back(i);
+        }
     }
+    return iv;
+
 }
 Item* Setting::getItemByName(std::string name) {
     auto it = std::find_if(_items.begin(), _items.end(), [&name] (const Item* p) -> bool { return p->_name == name; });
