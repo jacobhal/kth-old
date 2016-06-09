@@ -12,6 +12,8 @@ Scroll::Scroll(std::string name, std::string description) {
 Scroll::~Scroll() {
 }
 std::string Scroll::use(Character* c) {
+	c->_stats.hp += 20;
+	c->_stats.strength += 20;
 	c->removeItem(this);
 	return "";
 }

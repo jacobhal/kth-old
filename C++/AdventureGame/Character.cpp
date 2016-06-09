@@ -139,6 +139,10 @@ int Character::fight(Character & ch) {
                     ch.death();
                     _location->removeCharacter(&ch);
                     std::cout << "You defeated " << ch._name << "." << std::endl;
+                    if(ch._name == "Shrek") {
+                        ch._location->getCharacterByName("Jaina")->_attackPhrase = "Well done, hero. Your reward is a scroll which can increase your powers.";
+                        ch._location->getCharacterByName("Jaina")->_stateChanged = 1;
+                    }
                     return 1;
                 } else {
                     std::cout << ch.attack(*this) << std::endl;

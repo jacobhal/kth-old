@@ -197,10 +197,6 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 								std::cout << "You have beat the game, good job!\n";
 								_isRunning = false;
 							}
-							if(keyword == "LichKing") {
-								std::cout << "It appears the door to Onyxia's lair has opened!\n";
-								_player->_location->unlockRoute(2);
-							}
 							break;
 						case -1:
 							std::cout << "Game over..." << std::endl;
@@ -332,6 +328,10 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 				if(_player->_location->hasCharacter(_lookup[keyword])) {
 					found = true;
 					cout << _player->_location->getCharacterByPosition(_lookup[keyword])->_attackPhrase << "\n";
+					if(_player->_location->getCharacterByPosition(_lookup[keyword])->_stateChanged &&
+							_player->_location->getCharacterByPosition(_lookup[keyword])->_name == "Jaina") {
+						_player->_location->getCharacterByPosition(_lookup[keyword])->dropItems();
+					}
 				}
 				if(_player->_location->hasItem(_lookup[keyword])) {
 					found = true;

@@ -34,6 +34,7 @@ public:
 	std::string					_voiceLine;
 	std::string 				_name;
 	Equipment*					_weapon;
+	bool 						_stateChanged = 0;
 
 	virtual ~Character(); // Even pure virtual destructors must be defined
 
@@ -78,7 +79,7 @@ public:
 	int fight(Character & ch);
 	virtual void death(){};
 
-	virtual std::vector<Equipment> weapons() = 0;
+	virtual std::vector<Equipment> weapons() =0;
 
 	virtual float weakness(Character& src) =0; // Define the certain threats to a given class
 protected:
