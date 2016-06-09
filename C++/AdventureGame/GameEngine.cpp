@@ -195,10 +195,12 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 								std::cout << "You have beat the game, good job!\n";
 								_isRunning = false;
 							}
+							/*
 							if(keyword == "LichKing") {
 								std::cout << "It appears the door to Onyxia's lair has opened!\n";
 								_player->_location->unlockRoute(2);
 							}
+							 */
 							break;
 						case -1:
 							std::cout << "Game over..." << std::endl;
@@ -222,12 +224,15 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 		} else {
 			if(checkSize(userInput, 2)) {
 				// TODO: Perform wave action for given character getCharacterByName fuckar
-				if(_player->_settingPosition == _player->_location->getCharacterByName("Tyrael")->_settingPosition) {
-					if (_player->_location->_name == "Ruins" &&
-						_player->_location->getCharacterByName("Tyrael")->hasItem("key")) {
-						_player->_location->getCharacterByName("Tyrael")->removeItem(getItemByName("key"));
-						_player->addItem(getItemByName("key"));
-						cout << "Here's a key that will be necessary in order to continue your adventure!\n";
+				if(_player->_location->getCharacterByName("Tyrael") != nullptr) {
+					if (_player->_settingPosition ==
+						_player->_location->getCharacterByName("Tyrael")->_settingPosition) {
+						if (_player->_location->_name == "Ruins" &&
+							_player->_location->getCharacterByName("Tyrael")->hasItem("key")) {
+							_player->_location->getCharacterByName("Tyrael")->removeItem(getItemByName("key"));
+							_player->addItem(getItemByName("key"));
+							cout << "Here's a key that will be necessary in order to continue your adventure!\n";
+						}
 					}
 				}
 			} else {
