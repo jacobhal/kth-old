@@ -16,6 +16,8 @@ public:
     Equipment(std::string name, std::string desc, int weight, int stam, int str);
     virtual ~Equipment();
 
+    std::string use(Character *src){ return ""; }
+
 
 };
 

@@ -173,12 +173,7 @@ void GameEngine::userCommand(std::string command, bool hasOption = 0){
 		} else {
 			if(checkSize(userInput, 1)) {
 				if(_player->hasItem("map")) {
-					cout << BOLDYELLOW << "Current position \n" << RESET;
-					cout << _player->_location->_description << "\n";
-					cout << BOLDYELLOW << "Available directions \n" << RESET;
-					for(auto elem : _player->_location->getRoutes()) {
-						cout << elem << "\n";
-					}
+					getItemByName("map")->use(_player);
 				} else {
 					cout << "You don't possess a map:(\n";
 				}

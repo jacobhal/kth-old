@@ -11,7 +11,7 @@ Chest::Chest(std::string name, std::string description, Item* item) {
 }
 Chest::~Chest() {
 }
-std::string Chest::open(Character *src) {
+std::string Chest::use(Character *src) {
 	src->addItem(_containedItem);
 	return "Chest granted you a " + _containedItem->_description;
 }

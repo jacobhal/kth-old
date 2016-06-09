@@ -63,7 +63,7 @@ void Character::useItem(Useable *item) {
 void Character::openItem(Container *item) {
     // TODO: Check that player has item and add functionality in item files
     if(hasItem(item->_name)) {
-        std::cout << item->open(this) << std::endl;
+        std::cout << item->use(this) << std::endl;
         removeItem(item);
     }
 }

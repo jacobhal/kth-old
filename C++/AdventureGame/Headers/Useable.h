@@ -12,7 +12,7 @@ class Character;
 
 class Useable : public Item {
 public:
-    virtual std::string use(Character*) =0;
+    std::string use(Character*){ return ""; }
 };
 
 #endif //ADVENTUREGAME_USEABLE_H

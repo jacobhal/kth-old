@@ -13,7 +13,7 @@ class Character;
 class Container : public Item {
 public:
     Item* _containedItem;
-    virtual std::string open(Character *src) =0;
+    std::string use(Character *src){ return ""; }
 };
 
 #endif //ADVENTUREGAME_CONTAINER_H

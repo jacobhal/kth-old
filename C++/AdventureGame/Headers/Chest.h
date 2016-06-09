@@ -11,7 +11,7 @@ class Chest : public Container {
 public:
     Chest(std::string name, std::string description, Item* item);
     ~Chest();
-    std::string open(Character *src);
+    std::string use(Character *src);
 };
 
 #endif //ADVENTUREGAME_CHEST_H
