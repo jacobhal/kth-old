@@ -1,6 +1,6 @@
 //Maya ASCII 2016 scene
 //Name: Fountain.ma
-//Last modified: Mon, Jun 20, 2016 05:20:34 PM
+//Last modified: Mon, Jun 20, 2016 05:20:16 PM
 //Codeset: UTF-8
 requires maya "2016";
 requires "stereoCamera" "10.0";
@@ -16,13 +16,13 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "D68388A3-8149-B1B9-3704-048C98A7295B";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 60.866903525080531 149.8718463721568 246.75517417125883 ;
+	setAttr ".t" -type "double3" 54.2437128532925 138.85487380915217 229.13446095175055 ;
 	setAttr ".r" -type "double3" -30.338352729848722 -1059.3999999996161 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "A53EB25A-7C45-EF6D-52D9-0EB45B4A4B2E";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999986;
-	setAttr ".coi" 256.18404160939963;
+	setAttr ".coi" 234.3728088727288;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
