@@ -1,6 +1,6 @@
 //Maya ASCII 2016 scene
 //Name: Fountain.ma
-//Last modified: Thu, Jun 23, 2016 01:04:52 PM
+//Last modified: Thu, Jun 23, 2016 01:03:44 PM
 //Codeset: UTF-8
 requires maya "2016";
 requires "stereoCamera" "10.0";
@@ -15,15 +15,15 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "D68388A3-8149-B1B9-3704-048C98A7295B";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -55.254977288575269 115.36037100401084 212.4578835531288 ;
-	setAttr ".r" -type "double3" 330.861647282869 -380.1999999999698 0 ;
+	setAttr ".t" -type "double3" -42.02425632909349 94.384361738730689 174.10127716832534 ;
+	setAttr ".r" -type "double3" 330.26164728286977 -380.59999999997063 8.4945309567088919e-16 ;
 	setAttr ".rp" -type "double3" 5.3290705182007514e-15 -7.1054273576010019e-15 1.4210854715202004e-14 ;
 	setAttr ".rpt" -type "double3" 1.0388384985154915e-14 1.0618218389007825e-14 -9.5787521765719853e-15 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "A53EB25A-7C45-EF6D-52D9-0EB45B4A4B2E";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999986;
-	setAttr ".coi" 182.1504287232467;
+	setAttr ".coi" 136.51460745430404;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -73070,6 +73070,7 @@ createNode groupId -n "groupId242";
 	setAttr ".ihi" 0;
 createNode displayLayer -n "SpotLightsLayer";
 	rename -uid "8AE92361-9042-5385-E9CE-748A379F4635";
+	setAttr ".v" no;
 	setAttr ".do" 3;
 select -ne :time1;
 	setAttr ".o" 1;
